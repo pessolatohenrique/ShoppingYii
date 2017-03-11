@@ -11,9 +11,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
+    public $layout = "usuarioFinal.php"; //qual template/view será utilizado
     public function behaviors()
     {
         return [

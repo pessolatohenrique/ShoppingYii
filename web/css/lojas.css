@@ -1,0 +1,32 @@
+.lojas{
+	clear: both;
+	position: relative;
+}
+.lojas img{
+	transition: opacity 1s;
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-o-transition: opacity 1s;
+}
+.lojas li:first-child,.lojas li:nth-child(2),.lojas li:nth-child(3),.lojas li:nth-child(4){
+	float: left;
+	box-sizing: border-box;
+	margin-left: 0.1em;
+}
+.ultimaLoja{
+	width:18em;
+	height: 23em;
+	margin-left: 0.1em;
+	box-sizing: border-box;
+}
+.lojas img:hover{
+	opacity: 0.5;
+}
+.rotativo_promocao{
+	text-decoration: none;
+	text-transform: uppercase;
+	border: 0.3em solid black;
+	background-color: #008B45;
+	color: white;
+	padding: 0.5em 2em;
+}

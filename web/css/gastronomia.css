@@ -1,0 +1,30 @@
+.gastronomia{
+	margin-top: 1.1em;
+}
+.gastronomia li{
+	display: inline-block;
+	margin-left: 1.05em;
+}
+.gastronomia img{
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-box-shadow: 0 0 30px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0 30px rgba(0,0,0,0.75);
+    box-shadow: 0 0 30px rgba(0,0,0,0.75);
+	transition: opacity 1s;
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-o-transition: opacity 1s;
+}
+.gastronomia figcaption{
+	text-align: center;
+	padding: 0.2em;
+}
+.gastronomia li > a{
+	text-decoration: none;
+	color: #00868B;
+}
+.gastronomia img:hover{
+	opacity: 0.5;
+}
