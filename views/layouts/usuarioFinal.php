@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
+use yii\helpers\Url;
 use app\assets\UsuarioFinalAsset;
 UsuarioFinalAsset::register($this);
 ?>
@@ -27,7 +28,7 @@ UsuarioFinalAsset::register($this);
                 <li><a href="cinema.php">Cinema</a></li>
                 <li><a href="gastronomia.php">Gastronomia</a></li>
                 <li><a href="lojas.php">Lojas</a></li>
-                <li><a href="sobre.php">Sobre</a></li>
+                <li><a href="<?=Url::base();?>/?r=site/sobre">Sobre</a></li>
                 <li>
                     <span class="icone_localizado">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
