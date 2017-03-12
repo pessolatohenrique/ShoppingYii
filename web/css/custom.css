@@ -1,0 +1,16 @@
+.fa-pencil-square-o{
+	padding-left: 0.25em;
+    padding-top: 0.3em;
+}
+.tabela-categorias td:first-child{
+	width: 40%;
+}
+.tabela-categorias td:nth-child(2){
+	width: 40%;
+}
+.tabela-categorias td:nth-child(3){
+	width: 10%;
+}
+.tabela-categorias td:nth-child(4), .tabela-categorias td:last-child{
+	width: 5%;
+}
