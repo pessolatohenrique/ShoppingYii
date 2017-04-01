@@ -1,8 +1,10 @@
 <?php
 
 namespace app\controllers;
-
+header("Access-Control-Allow-Headers: *");
 use Yii;
+use mPDF;
+use cnpjGratis;
 use app\models\Categoria;
 use app\models\Area;
 use yii\data\ActiveDataProvider;
@@ -82,6 +84,25 @@ class CategoriaController extends Controller
        $categoria_id = Yii::$app->request->post('categoria_id');
        $this->findModel($categoria_id)->delete();
        return $this->redirect(['index']);
+    }
+    /*método de teste para gerar PDF*/
+    public function actionGera(){
+        $mpdf = new mPDF;
+        $mpdf->WriteHTML("Texto para teste");
+        $mpdf->Output();
+        exit;
+    }
+    public function actionPesquisa(){  
+        if (isset($_POST['cnpj'])) {
+            $empresa = \JansenFelipe\CnpjGratis\CnpjGratis::consulta($_POST['cnpj'], $_POST['captcha'], $_POST['cookie']);
+            echo json_encode($empresa);
+        }
+    }
+    /*método de teste para buscar CNPJ*/
+    public function actionProcura(){
+        $params = \JansenFelipe\CnpjGratis\CnpjGratis::getParams();
+        $dados = array("params" => $params);
+        return $this->render('cnpjTeste',$dados);
     }
     protected function findModel($id)
     {
