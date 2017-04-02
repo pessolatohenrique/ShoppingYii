@@ -47,24 +47,31 @@ $this->params['breadcrumbs'][] = $this->title;
 		<button type="reset" class="btn btn-warning">Limpar</button>
     <?php ActiveForm::end() ?>
     <br>
-    <table class="table table-bordered">
-    	<tr class="bg-info">
-    		<th>Loja</th>
-    		<th>Categoria</th>
-    		<th>Descrição</th>
-    		<th>Localização</th>
-    		<th></th>
-    		<th></th>
-    	</tr>
-    	<?php foreach($lojas_gastronomia as $key => $val):?>
-    		<tr>
-    			<td><?=$val['nome_loja']?></td>
-    			<td><?=$val['categoria_nome']?></td>
-    			<td><?=$val['descricao']?></td>
-    			<td><?=$val['localizacao']?></td>
-    			<td></td>
-    			<td></td>
-    		</tr>
-    	<?php endforeach; ?>
-    </table>
+    <?php if(count($lojas_gastronomia) == 0): ?>
+    	<div class="alert alert-info">
+    		Nenhum resultado encontrado. Refaça a sua pesquisa!
+    	</div>
+    <?php endif; ?>
+    <?php if(count($lojas_gastronomia) > 0): ?>
+	    <table class="table table-bordered">
+	    	<tr class="bg-info">
+	    		<th>Loja</th>
+	    		<th>Categoria</th>
+	    		<th>Descrição</th>
+	    		<th>Localização</th>
+	    		<th></th>
+	    		<th></th>
+	    	</tr>
+	    	<?php foreach($lojas_gastronomia as $key => $val):?>
+	    		<tr>
+	    			<td><?=$val['nome_loja']?></td>
+	    			<td><?=$val['categoria_nome']?></td>
+	    			<td><?=$val['descricao']?></td>
+	    			<td><?=$val['localizacao']?></td>
+	    			<td></td>
+	    			<td></td>
+	    		</tr>
+	    	<?php endforeach; ?>
+	    </table>
+	<?php endif; ?>
 </div>

@@ -25,7 +25,8 @@ class Gastronomia extends \yii\db\ActiveRecord
     {
         return [
             [['categoria_id'], 'integer'],
-            [['nome_loja'], 'required'],
+            [['nome_loja'], 'required','message' => 'O campo Nome é obrigatório'],
+            [['localizacao'], 'required','message' => 'A localização da loja é obrigatória'],
             [['descricao', 'localizacao'], 'string'],
             [['nome_loja'], 'string', 'max' => 50],
             [['nome_loja'], 'unique'],

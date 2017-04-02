@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Gastronomia;
 use app\models\Categoria;
+use app\models\Foto;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -68,14 +69,28 @@ class GastronomiaController extends Controller
     public function actionCreate()
     {
         $model = new Gastronomia();
-
+        $model_foto = new Foto();
+        $categoriaObj = new Categoria();
+        $paramsFiltro = Array('area_id' => 2);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $model_foto->salvaFoto($model);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'model_foto' => $model_foto,
+                'categorias' => $categoriaObj->lista($paramsFiltro)
             ]);
         }
+
+        /*
+$model->fotoCliente = UploadedFile::getInstance($model,'foto'); //atributo
+            $model->foto = $model->fotoCliente->name;
+            $model->save();
+
+            $uploadPath = Yii::getAlias('@webroot/arquivos');
+            $model->fotoCliente->saveAs($uploadPath.'/'.$model->fotoCliente->name);
+        */
     }
 
     /**
