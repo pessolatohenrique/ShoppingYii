@@ -46,4 +46,20 @@ class Categoria extends \yii\db\ActiveRecord
                             ->all();
         return $categorias;
     }
+    public function listaRelGastronomia(){
+        $query = new Query();
+        /*
+SELECT c.*, COUNT(c.nome) AS total_categoria 
+FROM `categorias` c RIGHT JOIN gastronomia g ON c.id = g.categoria_id
+GROUP BY c.nome
+ORDER BY c.nome
+        */
+        $categorias = $query->select(["c.*","COUNT(c.nome) AS total_categoria"])
+                            ->from("categorias c")
+                            ->join("RIGHT JOIN","gastronomia g","g.categoria_id = c.id")
+                            ->groupBy("c.nome")
+                            ->orderBy("c.nome")
+                            ->all();
+        return $categorias;
+    }
 }
