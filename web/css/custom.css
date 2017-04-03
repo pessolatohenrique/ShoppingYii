@@ -14,3 +14,21 @@
 .tabela-categorias td:nth-child(4), .tabela-categorias td:last-child{
 	width: 5%;
 }
+.fotoLojaConsulta img{
+	width: 480px;
+	height: 300px;
+}
+.fotoLojaConsulta figcaption{
+	font-style: italic;
+    background-color: #CFCFCF;
+    width: 480px;
+    padding: 0.3em 1em;
+    color: #4F4F4F;
+}
+.tabelaView tbody td:nth-of-type(1){
+	font-weight: bold;
+}
+.tabelaView thead td{
+	font-weight: bold;
+	text-align: center;
+}

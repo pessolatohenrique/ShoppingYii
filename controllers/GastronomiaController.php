@@ -56,8 +56,9 @@ class GastronomiaController extends Controller
      */
     public function actionView($id)
     {
+        $gastronomiaObj = new Gastronomia();
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $gastronomiaObj->consulta($id),
         ]);
     }
 
@@ -82,15 +83,6 @@ class GastronomiaController extends Controller
                 'categorias' => $categoriaObj->lista($paramsFiltro)
             ]);
         }
-
-        /*
-$model->fotoCliente = UploadedFile::getInstance($model,'foto'); //atributo
-            $model->foto = $model->fotoCliente->name;
-            $model->save();
-
-            $uploadPath = Yii::getAlias('@webroot/arquivos');
-            $model->fotoCliente->saveAs($uploadPath.'/'.$model->fotoCliente->name);
-        */
     }
 
     /**

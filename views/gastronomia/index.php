@@ -63,8 +63,13 @@ $this->params['breadcrumbs'][] = $this->title;
 	    		<th></th>
 	    	</tr>
 	    	<?php foreach($lojas_gastronomia as $key => $val):?>
+                <!-- http://localhost/Projetos/ShoppingYii/web/index.php?r=gastronomia/view&id=10 !-->
 	    		<tr>
-	    			<td><?=$val['nome_loja']?></td>
+	    			<td>
+                        <a href="<?=Url::base()?>/index.php?r=gastronomia/view&id=<?=$val['id']?>">
+                            <?=$val['nome_loja']?>
+                        </a>
+                    </td>
 	    			<td><?=$val['categoria_nome']?></td>
 	    			<td><?=$val['descricao']?></td>
 	    			<td><?=$val['localizacao']?></td>

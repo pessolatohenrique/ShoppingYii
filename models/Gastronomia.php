@@ -89,4 +89,17 @@ class Gastronomia extends \yii\db\ActiveRecord
         ->orderBy("g.nome_loja")->all();
         return $gastronomias;
     }
+    /*realiza a consulta de uma loja de gastronomia especifica*/
+    public function consulta($gastronomia_id){
+        $query = new Query();
+        /*SELECT `g`.*, `c`.`nome` AS `categoria_nome`, f.nome_arquivo, f.descricao FROM `gastronomia` `g` INNER JOIN `categorias` `c` ON g.categoria_id = c.id INNER JOIN fotos f ON f.loja_id = g.id*/
+        $gastronomia = $query
+        ->select("g.*,c.nome AS categoria_nome,f.nome_arquivo, f.descricao AS descricao_foto")
+        ->from("gastronomia g")
+        ->innerJoin("categorias c","g.categoria_id = c.id")
+        ->leftJoin("fotos f","f.loja_id = g.id")
+        ->where(['g.id' => $gastronomia_id])
+        ->one();
+        return $gastronomia;
+    }
 }
