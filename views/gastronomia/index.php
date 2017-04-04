@@ -78,7 +78,17 @@ $this->params['breadcrumbs'][] = $this->title;
                             <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                         </a>            
                     </td>
-	    			<td></td>
+	    			<td>
+                        <?php $form = ActiveForm::begin([
+                                'action' => Url::base()."/index.php?r=gastronomia/exclui",
+                                'id' => 'formulario'
+                            ])?>
+                            <input type="hidden" name="gastronomia_id" value="<?=$val['id']?>">
+                            <button class="btn btn-link">
+                                <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                            </button>
+                        <?php ActiveForm::end() ?>            
+                    </td>
 	    		</tr>
 	    	<?php endforeach; ?>
 	    </table>

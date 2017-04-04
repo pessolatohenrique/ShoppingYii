@@ -123,7 +123,17 @@ class GastronomiaController extends Controller
 
         return $this->redirect(['index']);
     }
-
+    /**
+     * Deletes an existing Gastronomia model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionExclui(){
+       $gastronomia_id = Yii::$app->request->post('gastronomia_id');
+       $this->findModel($gastronomia_id)->delete();
+       return $this->redirect(['index']);
+    }
     /**
      * Finds the Gastronomia model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
