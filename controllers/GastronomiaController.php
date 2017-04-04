@@ -94,12 +94,19 @@ class GastronomiaController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $model_foto = new Foto();
+        $categoriaObj = new Categoria();
+        $gastronomiaObj = new Gastronomia();
+        $paramsFiltro = Array('area_id' => 2);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $model_foto->salvaFoto($model);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'model_foto' => $model_foto,
+                'categorias' => $categoriaObj->lista($paramsFiltro),
+                'pesquisa' => $gastronomiaObj->consulta($id)
             ]);
         }
     }

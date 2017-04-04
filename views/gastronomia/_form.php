@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -13,17 +14,27 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <fieldset>
     	<legend>Informações Gerais</legend>
+    	<?php if(isset($pesquisa['nome_arquivo'])): 
+			$caminhoImg = "/arquivos/".$pesquisa["nome_arquivo"];
+    		$altImg = $pesquisa['descricao_foto']; 
+    	?>
+    		<img src="<?=Url::base()?>/<?=$caminhoImg?>" alt="<?=$altImg?>" class="imgSmall">
+    	<?php endif; ?>
 	 	<?= $form->field($model_foto, 'nome_arquivo')->fileInput() ?>
 	    <div class="row">
 	    	<div class="col-md-4">
 				<?= $form->field($model, 'nome_loja')->textInput(['maxlength' => true]) ?>    		
 	    	</div>
-<!-- 	    	<input type="text" id="gastronomia-nome_loja" class="form-control" name="Gastronomia[nome_loja]" maxlength="50" aria-required="true" aria-invalid="true"> -->
 	    	<div class="col-md-4">
 	    		<label for="Gastronomia[categoria_id]">Categoria</label>
 	    		<select name="Gastronomia[categoria_id]" class="form-control">
-	    			<?php foreach($categorias as $key => $val): ?>
-	    				<option value="<?=$val['id']?>"><?=$val['nome']?></option>
+	    			<?php foreach($categorias as $key => $val): 
+	    				$selecionado = isset($categoria_id) && $val['id'] == $categoria_id?"selected":""
+	    			?>
+
+	    				<option value="<?=$val['id']?>" <?=$selecionado?>>
+	    					<?=$val['nome']?>
+	    				</option>
 	    			<?php endforeach; ?>
 	    		</select>
 	    	</div>

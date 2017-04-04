@@ -73,7 +73,11 @@ $this->params['breadcrumbs'][] = $this->title;
 	    			<td><?=$val['categoria_nome']?></td>
 	    			<td><?=$val['descricao']?></td>
 	    			<td><?=$val['localizacao']?></td>
-	    			<td></td>
+	    			<td>
+                        <a href="<?=Url::base();?>/index.php?r=gastronomia/update&id=<?=$val['id']?>">
+                            <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                        </a>            
+                    </td>
 	    			<td></td>
 	    		</tr>
 	    	<?php endforeach; ?>
