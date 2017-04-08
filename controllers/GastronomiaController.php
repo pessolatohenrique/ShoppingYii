@@ -6,6 +6,7 @@ use Yii;
 use app\models\Gastronomia;
 use app\models\Categoria;
 use app\models\Foto;
+use app\models\CardapioItem;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -56,9 +57,17 @@ class GastronomiaController extends Controller
      */
     public function actionView($id)
     {
+        /*COMEÇA AQUI*/
+        $cardapioItemObj = new CardapioItem();
+        $tipos_cardapio = $cardapioItemObj->listaTiposCardapio($id);
+        $itensGeral = $cardapioItemObj->lista($id);
+        // $itens = $cardapioItemObj->listaPorTipo($itensGeral);
+        // var_dump($itens);
         $gastronomiaObj = new Gastronomia();
         return $this->render('view', [
             'model' => $gastronomiaObj->consulta($id),
+            'tipos_cardapio' => $tipos_cardapio,
+            'itens' => $itensGeral
         ]);
     }
 

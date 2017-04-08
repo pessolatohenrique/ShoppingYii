@@ -35,3 +35,11 @@
 .imgSmall{
 	width: 300px;
 }
+.cardapio_gastronomia ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.precoCardapio{
+	float:right;
+}
