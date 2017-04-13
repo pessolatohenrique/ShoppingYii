@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\Url;
-
+use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Gastronomia */
 
@@ -53,14 +53,34 @@ if(isset($model['nome_arquivo'])){
     </div>
     <div class="cardapio_gastronomia">
         <h3>Cardápio</h3>
-        <p>Confira abaixo as opções servidas neste estabelecimento</p>
+        <p>
+            Confira abaixo as opções servidas neste estabelecimento. Utilize o campo abaixo caso deseje adicionar um novo tipo de cardapío ou novos itens.
+        </p>
         <div class="row">
+            <div class="col-md-6">
+                <select class="form-control" name="tipo_cardapio_form" id="tipo_cardapio_form">
+                    <option value="">Selecione</option>
+                    <?php foreach($tipos_todos as $key => $val): ?>
+                        <option value="<?=$val['id']?>"><?=$val['tipo']?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary adicionaTipoCardapio">Adicionar</button>
+        </div>
+        <br>
+        <div class="row linhaCardapio">
             <?php foreach($tipos_cardapio as $key => $val): 
                 $tipo_id = $val['cardapioTipo_id'];
             ?>
                 <div class="col-md-12">
                     <div class="panel panel-primary">
-                        <div class="panel-heading"><?=$val['tipo_cardapio']?></div>
+                        <div class="panel-heading">
+                            <span class="tituloCardapio"><?=$val['tipo_cardapio']?></span>
+                            <a href="#" class="addItem">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                Adicionar Item
+                            </a>
+                        </div>
                         <div class="panel-body">
                             <ul>
                             <?php 
@@ -82,4 +102,31 @@ if(isset($model['nome_arquivo'])){
             <?php endforeach; ?>
         </div>
     </div>
+</div>
+<div class="itemDialog dialog">
+    <h3>Adicionar Item</h3>
+    <?php $form = ActiveForm::begin(); ?>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="nome_item">Item</label>
+                    <input type="text" name="nome_item" id="nome_item" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="descricao_item">Descrição</label>
+                    <input type="text" name="descricao_item" id="descricao_item" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="preco_item">Preço</label>
+                    <input type="text" name="preco_item" id="preco_item" class="form-control">
+                </div>
+            </div>
+        </div>
+    <?php ActiveForm::end(); ?>
+    <button type="button" class="btn btn-success fecharDialog">Fechar</button>
+    <button type="button" class="btn btn-primary adicionaItem">Salvar</button>
 </div>

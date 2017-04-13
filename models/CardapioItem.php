@@ -94,4 +94,9 @@ class CardapioItem extends \yii\db\ActiveRecord
                        ->orderBy('carTipo.tipo,carItem.nome_item')->all();
         return $itens;
     }
+    public function listAllTiposCardapio(){
+        $query = new Query();
+        $tipos = $query->select("*")->from("cardapiotipo")->orderBy("tipo")->all();
+        return $tipos;
+    }
 }

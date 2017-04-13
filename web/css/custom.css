@@ -43,3 +43,57 @@
 .precoCardapio{
 	float:right;
 }
+.field-error{
+	border: 2px solid red;
+}
+.text-error{
+	color: red;
+}
+.addItem{
+	color: white;
+	float: right;
+}
+.addItem:hover,.addItem:visited{
+	cursor: pointer;
+	text-decoration: none;
+	color: white;
+}
+.dialog{
+	display: none;
+}
+.dialog h3{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+.dialog form{
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 15px;
+}
+.dialog button{
+	float: right;
+	margin-left: 5px;
+}
+.itemDialog{
+	width: 800px;
+}
+.display{
+	display: block;
+}
+.hide{
+	display: none;
+}
+.bannerDialog{
+	width: 700px;
+	background-color: white;
+	box-sizing: border-box;
+	border: 5px solid transparent;
+	border-radius: 6px;
+	margin: 0 auto;
+	z-index: 9999;
+	outline: 9999px solid rgba(0,0,0,0.8);
+	padding: 1em;
+	position: absolute;
+	left: 310px;
+	top: 550px;
+}
