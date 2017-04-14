@@ -38,8 +38,8 @@ class CardapioItem extends \yii\db\ActiveRecord
             [['descricao'], 'string'],
             [['preco'], 'number'],
             [['nome_item'], 'string', 'max' => 50],
-            [['cardapioTipo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cardapiotipo::className(), 'targetAttribute' => ['cardapioTipo_id' => 'id']],
-            [['gastronomia_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gastronomia::className(), 'targetAttribute' => ['gastronomia_id' => 'id']],
+            // [['cardapioTipo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cardapiotipo::className(), 'targetAttribute' => ['cardapioTipo_id' => 'id']],
+            // [['gastronomia_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gastronomia::className(), 'targetAttribute' => ['gastronomia_id' => 'id']],
         ];
     }
 
@@ -98,5 +98,26 @@ class CardapioItem extends \yii\db\ActiveRecord
         $query = new Query();
         $tipos = $query->select("*")->from("cardapiotipo")->orderBy("tipo")->all();
         return $tipos;
+    }
+    /*adiciona um tipo de gastronomia a uma loja gastronomica. Exemplo:
+        a loja Amor aos pedaços possui os tipos Doces, salgados e bebidas*/
+    public function adicionaTipoGastronomia($params){
+        \Yii::$app->db->createCommand()
+        ->insert("cardapiotipo_gastronomia",[
+            'gastronomia_id' => $params['gastronomia_id'],
+            'cardapioTipo_id' => $params['cardapio_id']
+        ])->execute();
+    }
+    /*adiciona um item no tipo de gastronomia. Exemplo:
+        um brigadeiro no tipo Doce; um café no tipo bebidas*/
+    public function adicionaItem($params){
+        $precoFormat = str_replace(".", "", $params['item']['preco']);
+        $precoFormat = str_replace(",", ".", $precoFormat);
+        $this->gastronomia_id = $params['gastronomia_id'];
+        $this->cardapioTipo_id = $params['cardapio_id'];
+        $this->nome_item = $params['item']['nome'];
+        $this->descricao = $params['item']['descricao'];
+        $this->preco = $precoFormat;
+        $this->save();
     }
 }

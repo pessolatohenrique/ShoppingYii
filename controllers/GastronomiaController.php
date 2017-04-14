@@ -159,4 +159,18 @@ class GastronomiaController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    /*adiciona um tipo de gastronomia a uma loja gastronomica. Exemplo:
+        a loja Amor aos pedaços possui os tipos Doces, salgados e bebidas*/
+    public function actionAdiciona_tipo_gastronomia(){
+        $cardapioObj = new CardapioItem();
+        $paramsPOST = Yii::$app->request->post();
+        $cardapioObj->adicionaTipoGastronomia($paramsPOST);
+    }
+    /*adiciona um item no tipo de gastronomia. Exemplo:
+        um brigadeiro no tipo Doce; um café no tipo bebidas*/
+    public function actionAdiciona_item(){
+        $itemObj = new CardapioItem();
+        $paramsPOST = Yii::$app->request->post();
+        $itemObj->adicionaItem($paramsPOST);
+    }
 }

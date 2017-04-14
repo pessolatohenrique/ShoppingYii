@@ -19,6 +19,8 @@ if(isset($model['nome_arquivo'])){
 }
 ?>
 <div class="gastronomia-view">
+    <input type="hidden" name="gastronomia_id" id="gastronomia_id" value="<?=$model['id']?>">
+    <input type="hidden" id="urlForm" value="<?=Url::base()?>">
     <h1><?=$model['nome_loja']?></h1>
     <div class="row">
         <div class="col-md-5 fotoLojaConsulta">
@@ -75,6 +77,7 @@ if(isset($model['nome_arquivo'])){
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
+                            <input type="hidden" id="tipo_cardapio_id" value="<?=$tipo_id?>">
                             <span class="tituloCardapio"><?=$val['tipo_cardapio']?></span>
                             <a href="#" class="addItem">
                                 <i class="fa fa-plus" aria-hidden="true"></i>
