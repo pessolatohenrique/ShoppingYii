@@ -57,12 +57,9 @@ class GastronomiaController extends Controller
      */
     public function actionView($id)
     {
-        /*COMEÇA AQUI*/
         $cardapioItemObj = new CardapioItem();
         $tipos_cardapio = $cardapioItemObj->listaTiposCardapio($id);
         $itensGeral = $cardapioItemObj->lista($id);
-        // $itens = $cardapioItemObj->listaPorTipo($itensGeral);
-        // var_dump($itens);
         $gastronomiaObj = new Gastronomia();
         return $this->render('view', [
             'model' => $gastronomiaObj->consulta($id),
@@ -172,5 +169,13 @@ class GastronomiaController extends Controller
         $itemObj = new CardapioItem();
         $paramsPOST = Yii::$app->request->post();
         $itemObj->adicionaItem($paramsPOST);
+    }
+    /*busca as lojas por uma determinada categoria e retorna um arquivo JSON*/
+    public function actionBusca_por_categoria($categoria_id){
+        $gastronomiaObj = new Gastronomia();
+        $params = array("categoria" => $categoria_id);
+        $lojas = $gastronomiaObj->lista($params);
+        $arquivo_json = json_encode($lojas,JSON_UNESCAPED_UNICODE);
+        echo $arquivo_json;
     }
 }

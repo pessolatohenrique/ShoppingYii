@@ -28,3 +28,13 @@
 .gastronomia img:hover{
 	opacity: 0.5;
 }
+.itemPainel li > ul > li:first-child{
+	width: 55%;
+}
+.itemPainel li > ul > li:nth-of-type(2){
+	width: 18%;
+}
+.itemDestaque{
+	font-weight: bold;
+    color: #008B45;
+}

@@ -74,6 +74,53 @@ function addItemServidor(item,painel){
 		alert("Erro ao adicionar item. Contate o desenvolvedor!");
 	});
 }
+/*mostra as gastronomias pesquisadas*/
+function mostraGastronomias(vetor){
+	$(".painel_itens").remove();
+	var painel_itens = $("<section>").addClass("painel_itens");
+	$.each(vetor,function(key,val){
+		var descricaoCurta = val.descricao.substr(0,50);
+		var listaUL = $("<ul>").addClass("itemPainel");
+		var itemGeral = $("<li>");
+		var tituloLoja = $("<h4>");
+		var linkTituloLoja = $("<a>").attr("href","#").text(val.nome_loja);
+		var listaUL_encadeada = $("<ul>");
+		var itemDescricao = $("<li>").text(descricaoCurta);
+		var itemCategoria = $("<li>");
+		var itemLocalizacao = $("<li>").text(val.localizacao);
+		var spanCategoria = $("<span>").addClass("categoriaItem").text(val.categoria_nome);
+		itemCategoria.append(spanCategoria);
+		listaUL_encadeada.append(itemDescricao);
+		listaUL_encadeada.append(itemCategoria);
+		listaUL_encadeada.append(itemLocalizacao);
+		tituloLoja.append(linkTituloLoja);
+		itemGeral.append(tituloLoja);
+		itemGeral.append(listaUL_encadeada);
+		listaUL.append(itemGeral);
+		painel_itens.append(listaUL);	
+	});
+	$("div.container").append(painel_itens);	
+}
+/*altera o layout dos links para categoria selecionada*/
+function formataEstiloLink(link){
+	$(".linkPesquisaCategoria").removeClass("itemDestaque");
+	$(".linkPesquisaCategoria").css("color","#848c94");
+	$(link).addClass("itemDestaque");
+	$(link).css("color","#008B45");
+}
+/*busca gastronomias que pertencem a uma determinada categoria.
+Exemplo: todas as lojas gastronomicas com a categoria "Cafeteria"*/
+function buscaGastronomiaServidor(link){
+	formataEstiloLink(link);
+	var gastronomia_id = link.siblings(".categoria_id").val();
+	var action = $("#urlForm").val()+"/index.php?r=gastronomia/busca_por_categoria&categoria_id="+gastronomia_id;
+	$.getJSON(action,{},function(data){
+		mostraGastronomias(data);
+	})
+	.error(function(){
+		alert("Erro ao pesquisar lojas. Contate o desenvolvedor!");
+	})
+}
 /*mostra a dialog de itens, utilizando efeito de overlay*/
 function mostraDialogItem(){
 	$(".itemDialog").css("display","block");
@@ -126,6 +173,11 @@ function disparaEventos(){
 		anuncio.css("display","none");
 		adicionaItemPainel(painel);
 	});
+	$(".linkPesquisaCategoria").on("click",function(event){
+		event.preventDefault();
+		var link = $(this);
+		buscaGastronomiaServidor(link);
+	})
 }
 $(document).ready(function(){
 	ajustaLayoutPreco();
