@@ -121,6 +121,18 @@ function buscaGastronomiaServidor(link){
 		alert("Erro ao pesquisar lojas. Contate o desenvolvedor!");
 	})
 }
+/*realiza a busca de uma gastronomia por seu nome, em estilo LIKE.
+Exemplo: todas as lojas gastronomicas com a palavra "Café"*/
+function buscaPorNomeServidor(nome_loja){
+	// http://localhost/Projetos/ShoppingYii/web/index.php?r=gastronomia/busca_por_nome&loja=Cafe
+	var action = $("#urlForm").val()+"/index.php?r=gastronomia/busca_por_nome&loja="+nome_loja;
+	$.getJSON(action,{},function(data){
+		mostraGastronomias(data);
+	})
+	.error(function(){
+		alert("Erro ao pesquisar lojas. Contate o desenvolvedor!");
+	});
+}
 /*mostra a dialog de itens, utilizando efeito de overlay*/
 function mostraDialogItem(){
 	$(".itemDialog").css("display","block");
@@ -177,7 +189,11 @@ function disparaEventos(){
 		event.preventDefault();
 		var link = $(this);
 		buscaGastronomiaServidor(link);
-	})
+	});
+	$("#pesquisaGastro").on("keyup",function(){
+		var palavra = $(this).val();
+		buscaPorNomeServidor(palavra);
+	});
 }
 $(document).ready(function(){
 	ajustaLayoutPreco();

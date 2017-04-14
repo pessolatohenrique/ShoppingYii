@@ -92,7 +92,6 @@ class Gastronomia extends \yii\db\ActiveRecord
     /*realiza a consulta de uma loja de gastronomia especifica*/
     public function consulta($gastronomia_id){
         $query = new Query();
-        /*SELECT `g`.*, `c`.`nome` AS `categoria_nome`, f.nome_arquivo, f.descricao FROM `gastronomia` `g` INNER JOIN `categorias` `c` ON g.categoria_id = c.id INNER JOIN fotos f ON f.loja_id = g.id*/
         $gastronomia = $query
         ->select("g.*,c.nome AS categoria_nome,f.nome_arquivo, f.descricao AS descricao_foto")
         ->from("gastronomia g")

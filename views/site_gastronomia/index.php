@@ -8,7 +8,7 @@ $this->title = 'Shopping | Gastronomia';
 	<section class="categorias categoriasGastronomia">
 		<h3>Categorias</h3>
 		<form action="" method="GET">
-			<input type="search" name="busca" placeholder="Realize a busca aqui!" class="campoPesquisa">
+			<input type="search" name="busca" placeholder="Realize a busca aqui!" class="campoPesquisa" id="pesquisaGastro">
 		</form>
 		<ul>
       	<?php foreach($categorias as $key => $val): ?>

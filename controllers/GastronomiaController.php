@@ -178,4 +178,12 @@ class GastronomiaController extends Controller
         $arquivo_json = json_encode($lojas,JSON_UNESCAPED_UNICODE);
         echo $arquivo_json;
     }
+    /*busca as lojas pelo nome (estilo LIKE) e retornau um arquivo JSON*/
+    public function actionBusca_por_nome($loja){
+        $gastronomiaObj = new Gastronomia();
+        $params = array("loja" => $loja);
+        $lojas = $gastronomiaObj->lista($params);
+        $arquivo_json = json_encode($lojas,JSON_UNESCAPED_UNICODE);
+        echo $arquivo_json;
+    }
 }
