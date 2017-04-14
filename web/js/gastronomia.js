@@ -124,7 +124,6 @@ function buscaGastronomiaServidor(link){
 /*realiza a busca de uma gastronomia por seu nome, em estilo LIKE.
 Exemplo: todas as lojas gastronomicas com a palavra "Café"*/
 function buscaPorNomeServidor(nome_loja){
-	// http://localhost/Projetos/ShoppingYii/web/index.php?r=gastronomia/busca_por_nome&loja=Cafe
 	var action = $("#urlForm").val()+"/index.php?r=gastronomia/busca_por_nome&loja="+nome_loja;
 	$.getJSON(action,{},function(data){
 		mostraGastronomias(data);

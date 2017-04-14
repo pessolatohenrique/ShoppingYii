@@ -97,3 +97,24 @@
 	left: 310px;
 	top: 550px;
 }
+.navbar-right{
+	margin-left: 650px;
+}
+.footer-main{
+    background-color: #e7e7e7;
+    border-top: 0.3px solid #ccc;
+    margin-top: 0.5em;
+    padding: 1em 2em;
+    color: #777;
+}
+.social{
+	list-style-type: none;
+}
+.social li{
+	display: inline-block;
+	padding-left: 5px;
+	margin-top: 15px;
+}
+.footer-main p:last-child{
+	margin-bottom: 0;
+}

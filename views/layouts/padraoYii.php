@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -25,38 +26,39 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Shopping</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Adicionar Novo
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Filme</a></li>
+                        <li><a href="<?=Url::base()?>/index.php?r=gastronomia/create">Gastronomia</a></li>
+                        <li><a href="#">Loja</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pesquisar
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Filme</a></li>
+                        <li><a href="<?=Url::base()?>/index.php?r=gastronomia">Gastronomia</a></li>
+                        <li><a href="#">Loja</a></li>
+                    </ul>
+                </li>
+            <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="fa fa-user"></span> <strong>Nome do usuário</strong></a></li>
+                    <li><a href="#"><span class="fa fa-sign-out"></span> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="container">
+    <div class="container" style="padding:0;">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
@@ -64,11 +66,36 @@ AppAsset::register($this);
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+<footer class="footer-main">
+    <div class="row">
+        <div class="col-md-10">
+            <p>
+                O sistema permite o gerenciamento de um shopping.<br>
+                Permite o gerenciamento de filmes, gastronomia e lojas, estando disponível para a parte administrativa do shopping e usuário final.
+            </p>
+            <p>
+                Desenvolvido por <strong>Henrique Pessolato</strong>
+            </p>
+        </div>
+        <div class="col-md-2">
+            <ul class="social">
+                <li>
+                    <a href="http://pessolatohenrique.esy.es/" target="_blank">
+                        <i class="fa fa-code fa-3x" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/pessolatohenrique" target="_blank">
+                        <i class="fa fa-github fa-3x" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://br.linkedin.com/in/henrique-pessolato-436aba6a" target="_blank">
+                        <i class="fa fa-linkedin fa-3x" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </footer>
 
