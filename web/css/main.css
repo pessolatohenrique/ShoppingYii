@@ -291,3 +291,77 @@ em{
 .categoriaItem{
 	text-transform: uppercase;
 }
+.informacoesConsulta{
+	padding-top: 1.1em;
+}
+.informacoesConsulta figure{
+	width: 55%;
+	float: left;
+}
+.informacoesConsulta ul{
+	width: 45%;
+	float: right;
+}
+.itensConsulta li{
+	padding: 0.3em 0;
+}
+.informacoesConsulta figure > img{
+	width: 600px;
+	height: 350px;
+}
+.informacoesConsulta figcaption{
+    font-style: italic;
+    background-color: #CFCFCF;
+    padding: 0.3em 1em;
+    color: #4F4F4F;
+    font-size: 0.85em;
+    width: 568px;
+    margin-top: -0.2em;
+}
+.informacoesConsulta figcaption > strong{
+	font-style: italic;
+}
+.lojasSemelhantes{
+	margin-top: 6.8em;
+}
+.lojasSemelhantes ul{
+	margin-top: 0.5em;
+}
+.lojasSemelhantes h3{
+	font-size: 1.2em;
+}
+.lojasSemelhantes figure{
+	width: 33%;
+}
+.lojasSemelhantes figure > img{
+	width: 150px;
+	height: 180px;
+}
+.lojasSemelhantes figcaption{
+	background-color: transparent;
+}
+.painel{
+    border: 2px solid #008B45;
+    border-radius: 5px;
+    margin-top: 0.5em;
+}
+.painel:nth-of-type(n+2){
+	margin-top: 0.9em;
+}
+.painel_cabecalho,.painel_corpo{
+	padding: 0.3em 1.3em;
+}
+.painel_cabecalho{
+	background-color: #008B45;
+    color: white;
+}
+.painel_corpo{
+	font-size: 0.9em;
+	padding-bottom: 0.9em;
+}
+.painel_corpo li{
+	padding-top: 0.4em;
+}
+.cardapioItem{
+	font-weight: bold;
+}

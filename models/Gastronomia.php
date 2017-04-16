@@ -101,4 +101,21 @@ class Gastronomia extends \yii\db\ActiveRecord
         ->one();
         return $gastronomia;
     }
+    /*realiza a listagem de lojas gastronomicas semelhantes*/
+    public function listaSemelhantes($gastronomiaObj,$qtdLimit){
+        $nome_loja = $gastronomiaObj['nome_loja'];
+        $categoria_id = $gastronomiaObj['categoria_id'];
+        $query = new Query();
+        $lojas = $query
+        ->select("g.*,c.nome AS categoria_nome,f.nome_arquivo, f.descricao AS descricao_foto")
+        ->from("gastronomia g")
+        ->innerJoin("categorias c","g.categoria_id = c.id")
+        ->leftJoin("fotos f","f.loja_id = g.id")
+        ->where(['like','g.nome_loja',$nome_loja])
+        ->orWhere(['categoria_id' => $categoria_id])
+        ->andWhere(["<>",'g.id',$gastronomiaObj['id']])
+        ->limit($qtdLimit)
+        ->all();
+        return $lojas;
+    }
 }

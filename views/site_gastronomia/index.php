@@ -23,7 +23,11 @@ $this->title = 'Shopping | Gastronomia';
     <?php foreach($lojas as $key => $val): ?>
 		<ul class="itemPainel">
 			<li>
-				<h4><a href="#"><?=$val['nome_loja']?></a></h4>
+				<h4>
+					<a href="<?=Url::base()?>/index.php?r=site_gastronomia/search&gastronomia_id=<?=$val['id']?>">
+						<?=$val['nome_loja']?>
+					</a>
+				</h4>
 				<ul>
 					<li><?=substr($val['descricao'],0,50)?></li>
 					<li>
