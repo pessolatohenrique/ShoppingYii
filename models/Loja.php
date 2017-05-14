@@ -60,10 +60,26 @@ class Loja extends \yii\db\ActiveRecord
         return $this->hasOne(Categorias::className(), ['id' => 'categoria_id']);
     }
     /**
+     * @param $params: array de parâmetros, com os filtros de pesquisa a serem utilizados. Exemplos de filtros:
+            *loja -> nome da loja (Saraiva, Renner, etc.)
+            *categoria -> categoria (Livraria, Vestuário, etc.) pode assumir mais de um valor
+            *descricao -> descrição da loja ("Variedade em livros","Roupas",etc)
      * @return lojas: lista de lojas, de acordo com a pesquisa
     */
-    public function lista(){
+    public function lista($params){
         $query = new Query();
+        if(isset($params['loja']) && $params['loja'] != ""){
+            $loja = $params['loja'];
+            $query->andWhere(['like','nome_loja',$loja]);
+        }
+        if(isset($params['categoria']) && $params['categoria'][0] != ""){
+            $categorias = $params['categoria'];
+            $query->andWhere(['in','categoria_id',$categorias]);
+        }
+        if(isset($params['descricao']) && $params['descricao'] != ""){
+            $descricao = $params['descricao'];
+            $query->andWhere(['like','descricao',$descricao]);
+        }
         $lojas = $query->select("l.*,c.nome AS categoria_nome")
                        ->from("lojas l")
                        ->innerJoin("categorias c","l.categoria_id = c.id")

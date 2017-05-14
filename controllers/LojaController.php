@@ -35,9 +35,13 @@ class LojaController extends Controller
      */
     public function actionIndex()
     {
+        $request = Yii::$app->request;
+        $paramsPOST = $request->post();
         $lojaObj = new Loja();
+        $categoriaObj = new Categoria();
         return $this->render('index', [
-            'lojas' => $lojaObj->lista(),
+            'lojas' => $lojaObj->lista($paramsPOST),
+            'categorias' => $categoriaObj->listaRelLoja()
         ]);
     }
 
