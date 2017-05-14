@@ -18,11 +18,11 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css', 'css/custom.css'
+        'css/site.css', 'css/custom.css','https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css'
     ];
     public $js = [
         'https://use.fontawesome.com/b17cc3a995.js','js/geral.js','js/buscaCNPJ.js','js/gastronomia.js',
-        'js/bootstrap.min.js'
+        'js/bootstrap.min.js','https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

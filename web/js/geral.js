@@ -15,6 +15,7 @@ function fecharDialog(){
 	});
 }
 $(document).ready(function(){
+	$(".comboMulti").select2();
 	enviaFormularioPorLink();
 	fecharDialog();
 });

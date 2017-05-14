@@ -13,6 +13,39 @@ $this->params['breadcrumbs'][] = "Lojas";
 ?>
 <div class="lojas-index">
     <h1>Lojas</h1>
+    <p>
+        Utilize o formulário abaixo para pesquisar as lojas presentes no Shopping
+    </p>
+    <?php $form = ActiveForm::begin(['method' => 'POST']); ?>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="loja">Loja</label>
+                    <input type="text" name="loja" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select name="categoria[]" class="form-control comboMulti" multiple="multiple">
+                        <option value="">Selecione</option>
+                        <?php foreach($categorias as $key => $val): ?>
+                            <option value="<?=$val['id']?>"><?=$val['nome']?> (<?=$val['total_categoria']?>)</option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" name="descricao" class="form-control">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Pesquisar</button>
+        <button type="reset" class="btn btn-warning">Limpar</button>
+    <?php ActiveForm::end() ?>
+    <br>
     <?php if(count($lojas) == 0): ?>
         <div class="alert alert-info">
             Nenhum resultado encontrado. Refaça a sua pesquisa!
