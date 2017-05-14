@@ -62,7 +62,10 @@ class GastronomiaController extends Controller
         $itensGeral = $cardapioItemObj->lista($id);
         $gastronomiaObj = new Gastronomia();
         return $this->render('view', [
-            'model' => $gastronomiaObj->consulta($id)
+            'model' => $gastronomiaObj->consulta($id),
+            'tipos_cardapio' => $tipos_cardapio,
+            'tipos_todos' => $cardapioItemObj->listAllTiposCardapio(),
+            'itens' => $itensGeral
         ]);
     }
 
