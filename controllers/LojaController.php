@@ -108,6 +108,12 @@ class LojaController extends Controller
         }
     }
 
+    public function actionExclui(){
+       $loja_id = Yii::$app->request->post('loja_id');
+       $this->findModel($loja_id)->delete();
+       return $this->redirect(['index']);
+    }
+
     /**
      * Deletes an existing Lojas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -117,7 +123,6 @@ class LojaController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 
