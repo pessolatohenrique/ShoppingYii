@@ -1,14 +1,13 @@
 <?php
 
 use yii\helpers\Html;
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Lojas */
 
-$this->title = 'Update Lojas: ' . $model->id;
+$this->title = 'Shopping | ' . $model->nome_loja;
 $this->params['breadcrumbs'][] = ['label' => 'Lojas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => $model->nome_loja];
+$this->params['breadcrumbs'][] = 'Atualizar';
 ?>
 <div class="lojas-update">
 
@@ -16,6 +15,10 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'model_foto' => $model_foto,
+        'categorias' => $categorias,
+        'categoria_id' => $model->categoria_id,
+        'pesquisa' => $pesquisa
     ]) ?>
 
 </div>

@@ -91,12 +91,19 @@ class LojaController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $model_foto = new Foto();
+        $categoriaObj = new Categoria();
+        $lojaObj = new Loja();
+        $paramsFiltro = Array('area_id' => 1);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $model_foto->salvaFoto($model);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'model_foto' => $model_foto,
+                'categorias' => $categoriaObj->lista($paramsFiltro),
+                'pesquisa' => $lojaObj->consulta($id)
             ]);
         }
     }
@@ -123,7 +130,7 @@ class LojaController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Lojas::findOne($id)) !== null) {
+        if (($model = Loja::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
