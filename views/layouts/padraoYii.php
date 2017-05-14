@@ -39,7 +39,7 @@ AppAsset::register($this);
                     <ul class="dropdown-menu">
                         <li><a href="#">Filme</a></li>
                         <li><a href="<?=Url::base()?>/index.php?r=gastronomia/create">Gastronomia</a></li>
-                        <li><a href="#">Loja</a></li>
+                        <li><a href="<?=Url::base()?>/index.php?r=loja/create">Loja</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -48,7 +48,7 @@ AppAsset::register($this);
                     <ul class="dropdown-menu">
                         <li><a href="#">Filme</a></li>
                         <li><a href="<?=Url::base()?>/index.php?r=gastronomia">Gastronomia</a></li>
-                        <li><a href="#">Loja</a></li>
+                        <li><a href="<?=Url::base()?>/index.php?r=loja">Loja</a></li>
                     </ul>
                 </li>
             <ul class="nav navbar-nav navbar-right">
