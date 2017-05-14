@@ -52,8 +52,9 @@ class LojaController extends Controller
      */
     public function actionView($id)
     {
+        $lojaObj = new Loja();
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $lojaObj->consulta($id),
         ]);
     }
 

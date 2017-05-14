@@ -87,4 +87,18 @@ class Loja extends \yii\db\ActiveRecord
                        ->all();
         return $lojas;
     }
+    /**
+       *@param loja_id -> ID (identificador) da loja
+       *@return loja: retorna uma loja de acordo com o ID consultado, ou nenhuma, no caso de não existir a pesquisa na base de dados 
+    */
+    public function consulta($loja_id){
+        $query = new Query();
+        $loja = $query->select("l.*,c.nome AS categoria_nome,f.nome_arquivo, f.descricao AS descricao_foto")
+              ->from("lojas l")
+              ->innerJoin("categorias c","l.categoria_id = c.id")
+              ->join("LEFT JOIN","fotos f","f.loja_id = l.id")
+              ->where(['=','l.id',$loja_id])
+              ->one();
+        return $loja;
+    }
 }
