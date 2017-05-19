@@ -105,6 +105,8 @@ function mostraGastronomias(vetor){
 function formataEstiloLink(link){
 	$(".linkPesquisaCategoria").removeClass("itemDestaque");
 	$(".linkPesquisaCategoria").css("color","#848c94");
+	$(".linkPesquisaLoja").removeClass("itemDestaque");
+	$(".linkPesquisaLoja").css("color","#848c94");
 	$(link).addClass("itemDestaque");
 	$(link).css("color","#008B45");
 }

@@ -27,7 +27,7 @@ UsuarioFinalAsset::register($this);
             <ul class="servicos">
                 <li><a href="cinema.php">Cinema</a></li>
                 <li><a href="<?=Url::base();?>/index.php?r=site_gastronomia">Gastronomia</a></li>
-                <li><a href="lojas.php">Lojas</a></li>
+                <li><a href="<?=Url::base();?>/index.php?r=site_loja">Lojas</a></li>
                 <li><a href="<?=Url::base();?>/?r=site/sobre">Sobre</a></li>
                 <li>
                     <span class="icone_localizado">

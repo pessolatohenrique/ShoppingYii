@@ -114,6 +114,24 @@ class LojaController extends Controller
        return $this->redirect(['index']);
     }
 
+    /*busca as lojas por uma determinada categoria e retorna um arquivo JSON*/
+    public function actionBusca_por_categoria($categoria_id){
+        $lojaObj = new Loja();
+        $params = array("categoria" => $categoria_id);
+        $lojas = $lojaObj->lista($params);
+        $arquivo_json = json_encode($lojas,JSON_UNESCAPED_UNICODE);
+        echo $arquivo_json;
+    }
+
+    /*busca as lojas pelo nome (estilo LIKE) e retornau um arquivo JSON*/
+    public function actionBusca_por_nome($loja){
+        $lojaObj = new Loja();
+        $params = array("loja" => $loja);
+        $lojas = $lojaObj->lista($params);
+        $arquivo_json = json_encode($lojas,JSON_UNESCAPED_UNICODE);
+        echo $arquivo_json;
+    }
+
     /**
      * Deletes an existing Lojas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
