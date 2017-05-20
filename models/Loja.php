@@ -80,9 +80,10 @@ class Loja extends \yii\db\ActiveRecord
             $descricao = $params['descricao'];
             $query->andWhere(['like','descricao',$descricao]);
         }
-        $lojas = $query->select("l.*,c.nome AS categoria_nome")
+        $lojas = $query->select("l.*,c.nome AS categoria_nome,a.id AS area_id")
                        ->from("lojas l")
                        ->innerJoin("categorias c","l.categoria_id = c.id")
+                       ->innerJoin("areas a","c.area_id = a.id")
                        ->orderBy("l.nome_loja")
                        ->all();
         return $lojas;
@@ -100,5 +101,28 @@ class Loja extends \yii\db\ActiveRecord
               ->where(['=','l.id',$loja_id])
               ->one();
         return $loja;
+    }
+    /**
+      *realiza a listagem de lojas semelhantes, através de nome ou categoria parecida
+      *@param $lojaObj: objeto com dados de uma loja consultada
+      *@param $qtdLimit: número de lojas a serem consultadas
+      *@return $lojas
+    */
+    public function listaSemelhantes($lojaObj,$qtdLimit){
+        $nome_loja = $lojaObj['nome_loja'];
+        $categoria_id = $lojaObj['categoria_id'];
+        $query = new Query();
+        $lojas = $query
+        ->select("lo.*,c.nome AS categoria_nome,f.nome_arquivo, f.descricao AS descricao_foto")
+        ->distinct()
+        ->from("lojas lo")
+        ->innerJoin("categorias c","lo.categoria_id = c.id")
+        ->leftJoin("fotos f","f.loja_id = lo.id")
+        ->where(['like','lo.nome_loja',$nome_loja])
+        ->orWhere(['categoria_id' => $categoria_id])
+        ->andWhere(["<>",'lo.id',$lojaObj['id']])
+        ->limit($qtdLimit)
+        ->all();
+        return $lojas;
     }
 }

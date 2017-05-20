@@ -297,6 +297,7 @@ em{
 .informacoesConsulta figure{
 	width: 55%;
 	float: left;
+	padding-bottom: 1em;
 }
 .informacoesConsulta ul{
 	width: 45%;

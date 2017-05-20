@@ -14,7 +14,13 @@ class Site_lojaController extends \yii\web\Controller
             'lojas' => $lojaObj->lista(array())
         ]);
     }
-    public function actionSearch($gastronomia_id){
-
+    public function actionSearch($loja_id){
+        $lojaObj = new loja();
+        $loja_consulta = $lojaObj->consulta($loja_id);
+        $semelhantes = $lojaObj->listaSemelhantes($loja_consulta,3);
+        return $this->render('search',[
+            'model' => $loja_consulta,
+            'semelhantes' => $semelhantes
+        ]);
     }
 }

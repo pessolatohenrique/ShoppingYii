@@ -79,11 +79,18 @@ function mostraGastronomias(vetor){
 	$(".painel_itens").remove();
 	var painel_itens = $("<section>").addClass("painel_itens");
 	$.each(vetor,function(key,val){
+		console.log(val);
 		var descricaoCurta = val.descricao.substr(0,50);
 		var listaUL = $("<ul>").addClass("itemPainel");
 		var itemGeral = $("<li>");
 		var tituloLoja = $("<h4>");
-		var linkTituloLoja = $("<a>").attr("href","#").text(val.nome_loja);
+		/*<a href="<?=Url::base()?>/index.php?r=site_loja/search&loja_id=<?=$val['id']?>"><?=$val['nome_loja']?></a>*/
+		if(val.area_id == 1){
+			var linkTituloLoja = $("<a>").attr("href","index.php?r=site_loja/search&loja_id="+val.id).text(val.nome_loja);
+		}else{
+			var linkTituloLoja = $("<a>").attr("href","index.php?r=site_gastronomia/search&gastronomia_id="+val.id).text(val.nome_loja);	
+		}
+		
 		var listaUL_encadeada = $("<ul>");
 		var itemDescricao = $("<li>").text(descricaoCurta);
 		var itemCategoria = $("<li>");
@@ -125,7 +132,7 @@ function buscaGastronomiaServidor(link){
 }
 /*realiza a busca de uma gastronomia por seu nome, em estilo LIKE.
 Exemplo: todas as lojas gastronomicas com a palavra "Café"*/
-function buscaPorNomeServidor(nome_loja){
+function buscaGastronomiaPorNome(nome_loja){
 	var action = $("#urlForm").val()+"/index.php?r=gastronomia/busca_por_nome&loja="+nome_loja;
 	$.getJSON(action,{},function(data){
 		mostraGastronomias(data);
@@ -165,7 +172,7 @@ function limpaFormulario(){
 	$("#preco_item").val("");
 }
 /*centraliza todos os eventos desta página*/
-function disparaEventos(){
+function disparaEventosGastro(){
 	var painel = "";
 	$(".adicionaTipoCardapio").on("click",function(){
 		var combo = $("#tipo_cardapio_form option:selected");
@@ -187,16 +194,18 @@ function disparaEventos(){
 		adicionaItemPainel(painel);
 	});
 	$(".linkPesquisaCategoria").on("click",function(event){
+		console.log("clicouuu");
 		event.preventDefault();
 		var link = $(this);
 		buscaGastronomiaServidor(link);
 	});
 	$("#pesquisaGastro").on("keyup",function(){
 		var palavra = $(this).val();
-		buscaPorNomeServidor(palavra);
+		$(".linkPesquisaCategoria").removeClass("itemDestaque");
+		buscaGastronomiaPorNome(palavra);
 	});
 }
 $(document).ready(function(){
-	ajustaLayoutPreco();
-	disparaEventos();
+	// ajustaLayoutPreco();
+	disparaEventosGastro();
 });
