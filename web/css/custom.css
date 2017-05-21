@@ -52,11 +52,11 @@
 .text-error{
 	color: red;
 }
-.addItem{
+.addItem, .excluirVinculo{
 	color: white;
 	float: right;
 }
-.addItem:hover,.addItem:visited{
+.addItem:hover,.addItem:visited,.excluirVinculo:hover,.excluirVinculo:visited{
 	cursor: pointer;
 	text-decoration: none;
 	color: white;

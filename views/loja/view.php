@@ -69,7 +69,14 @@ if(isset($model['nome_arquivo'])){
     <section class="categorias_produtos">
         <?php foreach($categorias_salvas as $key => $val): ?>
             <div class="panel panel-primary">
-                <div class="panel-heading"><?=$val['categoria_nome']?></div>
+                <div class="panel-heading">
+                    <input type="hidden" id="categoria_painel_id" value="<?=$val['categoria_id']?>">
+                    <span class="categoria_painel"><?=$val['categoria_nome']?></span>
+                    <a href="#" class="excluirVinculo">
+                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                        Excluir Vínculo
+                    </a>
+                </div>
                 <div class="panel-body">Sem subcategorias vinculadas</div>
             </div>
         <?php endforeach; ?>

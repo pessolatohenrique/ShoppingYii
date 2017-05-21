@@ -61,6 +61,24 @@ function vinculaLojaCategoria(loja_id,categoria_id){
 		alert("Erro ao realizar requisição. Contate o desenvolvedor!");
 	})
 }
+/**
+	exclui o vínculo entre loja e categoria.
+	*Exemplo: a loja Saraiva não venderá mais a categoria "Papelaria"
+	*@param loja_id: ID da loja
+	*@param categoria_id: ID da categoria
+*/
+function excluiVinculo(loja_id,categoria_id,link){
+	var url_ajax = "index.php?r=categoria_produto/delete";
+	var dados = {"loja_id":loja_id,"categoria_id":categoria_id};
+	$.post(url_ajax,dados,function(data){
+		var painel = $(link).parent().parent();
+		painel.fadeOut(700,function(){
+			painel.remove();
+		})
+	}).error(function(){
+		alert("Erro ao realizar requisição. Contate o desenvolvedor!");
+	})
+}
 function disparaEventos(){
 	$(".linkPesquisaLoja").on("click",function(event){
 		event.preventDefault();
@@ -80,6 +98,13 @@ function disparaEventos(){
 		var categoria_nome = $("#categoria_dialog").val();
 		adicionaCategoriaProduto(categoria_nome);
 	});
+	$(".excluirVinculo").on("click",function(event){
+		event.preventDefault();
+		var link = $(this);
+		var loja_id = $("#loja_id").val();
+		var categoria_id = $(this).siblings("#categoria_painel_id").val();
+		excluiVinculo(loja_id,categoria_id,link);
+	})
 }
 $(document).ready(function(){
 	disparaEventos();
