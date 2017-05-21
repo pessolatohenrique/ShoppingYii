@@ -121,3 +121,9 @@
 .footer-main p:last-child{
 	margin-bottom: 0;
 }
+.categorias_produtos h4{
+	border-bottom: 1px solid #ccc;
+}
+.categorias_produtos h4, .categorias_produtos p{
+	padding-left: 0.3em;
+}

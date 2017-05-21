@@ -6,6 +6,7 @@ use Yii;
 use app\models\Loja;
 use app\models\Foto;
 use app\models\Categoria;
+use app\models\CategoriaProdutos;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -53,8 +54,11 @@ class LojaController extends Controller
     public function actionView($id)
     {
         $lojaObj = new Loja();
+        $categoriaObj = new CategoriaProdutos();
         return $this->render('view', [
             'model' => $lojaObj->consulta($id),
+            'categorias_produtos' => CategoriaProdutos::find()->all(),
+            'categorias_salvas' => $categoriaObj->listaRelLoja($id)
         ]);
     }
 
