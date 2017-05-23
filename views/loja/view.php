@@ -76,8 +76,24 @@ if(isset($model['nome_arquivo'])){
                         <i class="fa fa-minus-circle" aria-hidden="true"></i>
                         Excluir Vínculo
                     </a>
+                    <a href="#" class="minimizarPainel">
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+
                 </div>
-                <div class="panel-body">Sem subcategorias vinculadas</div>
+                <div class="panel-body subcategorias_vinculadas">
+                    <a href="#">Vincular subcategoria</a>
+                    <ul>
+                        <li>
+                            <span>Autoajuda</span>
+                            <i class="fa fa-times" aria-hidden="true"></i>
+
+                        </li>
+                        <li>Histórias em Quadrinhos (HQs)</li>
+                        <li>Literatura Estrangeira</li>
+                        <li>Literatura infantojuvenil</li>
+                    </ul>
+                </div>
             </div>
         <?php endforeach; ?>
     </section>

@@ -127,3 +127,20 @@
 .categorias_produtos h4, .categorias_produtos p{
 	padding-left: 0.3em;
 }
+.subcategorias_vinculadas li:first-child{
+	margin-left: -2.5em;
+}
+.subcategorias_vinculadas li{
+	display: inline-block;
+	border-color: #009688;
+	background-color: #009688;
+	border-radius: 3px;
+	color: white;
+	text-align: center;
+    padding: 0.5em 1.3em 0.5em 1.3em;
+    margin-right: 0.5em;
+    cursor: pointer;
+}
+.minimizarPainel,.minimizaPainel:hover,.minimizaPainel:visited{
+	color: white;
+}

@@ -104,7 +104,12 @@ function disparaEventos(){
 		var loja_id = $("#loja_id").val();
 		var categoria_id = $(this).siblings("#categoria_painel_id").val();
 		excluiVinculo(loja_id,categoria_id,link);
-	})
+	});
+	$(".minimizarPainel").on("click",function(event){
+		event.preventDefault();
+		var link = $(this);
+		minimizaPainel(link);
+	});
 }
 $(document).ready(function(){
 	disparaEventos();
