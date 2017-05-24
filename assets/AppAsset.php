@@ -21,7 +21,7 @@ class AppAsset extends AssetBundle
         'css/site.css', 'css/custom.css','https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css'
     ];
     public $js = [
-        'https://use.fontawesome.com/b17cc3a995.js','js/geral.js','js/utils.js','js/buscaCNPJ.js','js/gastronomia.js','js/lojas.js',
+        'https://use.fontawesome.com/b17cc3a995.js','js/geral.js','js/utils.js','js/buscaCNPJ.js','js/gastronomia.js','js/lojas.js','js/subcategoria.js',
         'js/bootstrap.min.js','https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js'
     ];
     public $depends = [

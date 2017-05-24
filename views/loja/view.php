@@ -82,16 +82,22 @@ if(isset($model['nome_arquivo'])){
 
                 </div>
                 <div class="panel-body subcategorias_vinculadas">
-                    <a href="#">Vincular subcategoria</a>
+                    <a href="#" data-toggle="modal" data-target="#modalSubcategoria" id="linkModalSub">Vincular subcategoria</a>
                     <ul>
+                    <?php 
+                    foreach($subcategorias as $chave => $valor): 
+                        if($val['categoria_id'] == $valor['categoria_id']):
+                    ?>
                         <li>
-                            <span>Autoajuda</span>
+                            <input type="hidden" name="subcategoria_id" id="subcategoria_id" 
+                                value="<?=$valor['subcategoria_id']?>">
+                            <span><?=$valor['subcategoria_nome']?></span>
                             <i class="fa fa-times" aria-hidden="true"></i>
-
                         </li>
-                        <li>Histórias em Quadrinhos (HQs)</li>
-                        <li>Literatura Estrangeira</li>
-                        <li>Literatura infantojuvenil</li>
+
+                    <?php 
+                        endif;
+                    endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -116,6 +122,46 @@ if(isset($model['nome_arquivo'])){
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" id="salvar_dialog">Salvar</button>
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+<!-- Modal de Subcategoria -->
+  <div class="modal fade" id="modalSubcategoria" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Vincular Subcategoria</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="categoria_vinculo">Categoria</label>
+                        <select name="categoria_vinculo" id="categoria_vinculo" class="form-control">
+                            <option value="">Selecione</option>
+                            <?php foreach($categorias_salvas as $key => $val): ?>
+                                <option value="<?=$val['categoria_id']?>"><?=$val['categoria_nome']?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="subcategoria_vinculo">Subcategoria</label>
+                        <select name="subcategoria_vinculo" id="subcategoria_vinculo" class="form-control">
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="salvar_dialog_sub">Salvar</button>
           <button type="button" class="btn btn-warning" data-dismiss="modal">Fechar</button>
         </div>
       </div>
