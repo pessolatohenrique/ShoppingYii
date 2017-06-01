@@ -96,7 +96,7 @@ if(isset($model['nome_arquivo'])){
                             <input type="hidden" name="subcategoria_id" id="subcategoria_id" 
                                 value="<?=$valor['subcategoria_id']?>">
                             <span><?=$valor['subcategoria_nome']?></span>
-                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <i class="fa fa-times iconeExclusao" aria-hidden="true"></i>
                         </li>
 
                     <?php 

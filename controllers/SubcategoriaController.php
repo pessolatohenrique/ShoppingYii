@@ -43,4 +43,12 @@ class SubcategoriaController extends \yii\web\Controller
 			echo "999";
 		}
 	}
+    public function actionDelete(){
+        $paramsPOST = Yii::$app->request->post();
+        $loja_id = $paramsPOST['loja_id'];
+        $subcategoria_id = $paramsPOST['subcategoria_id'];
+        $vinculo = LojasSubcategoriaProdutos::find()->where(['loja_id' => $loja_id])
+        ->andWhere(['subcategoria_id' => $subcategoria_id])->one();
+        $vinculo->delete();
+    }
 }

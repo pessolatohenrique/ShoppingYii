@@ -132,6 +132,24 @@ function vinculaSubcategoriaLoja(loja_id,subcategoria_id,link){
 		alert("Erro ao realizar requisição. Contate o desenvolvedor!");
 	})
 }
+/**
+	*exclui o vínculo entre loja e subcategoria
+	*exemplo: a loja Saraiva não venderá mais a subcategoria "Literatura Estrangeira"
+	*@param loja_id: ID da loja
+	*@param subcategoria_id: ID da subcategoria
+*/
+function excluiVinculoSubcategoria(loja_id,subcategoria_id,link){
+	var action = "index.php?r=subcategoria/delete";
+	var dados = {"loja_id":loja_id,"subcategoria_id":subcategoria_id};
+	$.post(action,dados,function(data){
+		var item_lista = $(link).parent();
+		$(item_lista).fadeOut(800,function(){
+			item_lista.remove();
+		});
+	}).error(function(){
+		alert("Erro ao realizar requisição. Contate o desenvolvedor!");
+	})
+}
 function mainSubcategoria(){
 	var link_painel = "";
 	$("#vincular_categoria").on("click",function(){
@@ -172,6 +190,12 @@ function mainSubcategoria(){
 		var categoria_id = $("#categoria_vinculo_add").val();
 		var subcategoria_nome = $("#subcategoria_vinculo_add").val();
 		adicionaSubcategoria(categoria_id,subcategoria_nome);
+	});
+	$(".iconeExclusao").on("click",function(){
+		var loja_id = $("#loja_id").val();
+		var subcategoria_id = $(this).siblings("#subcategoria_id").val();
+		var icone = $(this);
+		excluiVinculoSubcategoria(loja_id,subcategoria_id,icone);
 	});
 }
 $(document).ready(function(){
