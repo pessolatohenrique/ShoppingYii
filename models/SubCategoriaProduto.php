@@ -34,7 +34,6 @@ class SubCategoriaProduto extends \yii\db\ActiveRecord
             [['categoria_id'], 'integer'],
             [['nome'], 'required'],
             [['nome'], 'string', 'max' => 150],
-            [['nome'], 'unique'],
             [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categoriaprodutos::className(), 'targetAttribute' => ['categoria_id' => 'id']],
         ];
     }

@@ -19,9 +19,16 @@ class Categoria_produtoController extends Controller
     public function actionVincula_categoria(){
 		$paramsPOST = Yii::$app->request->post();
 		$vinculoObj = new LojaCategoriaProdutos();
-		$vinculoObj->loja_id = $paramsPOST['loja_id'];
-		$vinculoObj->categoria_id = $paramsPOST['categoria_id'];
-		$vinculoObj->save();
+        $loja_id = $paramsPOST['loja_id'];
+        $categoria_id = $paramsPOST['categoria_id'];
+        $flagExiste = $vinculoObj->consultaVinculo($loja_id,$categoria_id);
+        if($flagExiste == NULL){
+    		$vinculoObj->loja_id = $paramsPOST['loja_id'];
+    		$vinculoObj->categoria_id = $paramsPOST['categoria_id'];
+    		$vinculoObj->save();
+        }else{
+            echo "999";
+        }
     }
     /**
 		*adiciona uma nova categoria de um produto

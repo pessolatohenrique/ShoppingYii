@@ -83,7 +83,12 @@ function vinculaLojaCategoria(loja_id,categoria_id){
 	var url_ajax = "index.php?r=categoria_produto/vincula_categoria";
 	var dados = {"loja_id":loja_id,"categoria_id":categoria_id};
 	$.post(url_ajax,dados,function(data){
-		adicionaPainelCategoria();
+		if(data != "999"){
+			adicionaPainelCategoria();
+		}else{
+			alert("Esta categoria já está vinculada a loja. Por favor, verifique!");
+		}
+		
 	}).error(function(){
 		alert("Erro ao realizar requisição. Contate o desenvolvedor!");
 	})
@@ -116,9 +121,13 @@ function vinculaSubcategoriaLoja(loja_id,subcategoria_id,link){
 	var action = "index.php?r=subcategoria/create";
 	var dados = {"loja_id":loja_id,"subcategoria_id":subcategoria_id};
 	$.post(action,dados,function(data){
+		if(data != "999"){
+			var subcategoria_nome = $("#subcategoria_vinculo option:selected").text();
+			adicionaEtiqueta(subcategoria_id,subcategoria_nome,link);
+		}else{
+			alert("Este vinculo já existe. Por favor, verifique");
+		}
 		$("#modalSubcategoria").modal('hide');
-		var subcategoria_nome = $("#subcategoria_vinculo option:selected").text();
-		adicionaEtiqueta(subcategoria_id,subcategoria_nome,link);
 	}).error(function(){
 		alert("Erro ao realizar requisição. Contate o desenvolvedor!");
 	})

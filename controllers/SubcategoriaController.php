@@ -19,10 +19,15 @@ class SubcategoriaController extends \yii\web\Controller
 		$loja_id = $paramsPOST['loja_id'];
 		$subcategoria_id = $paramsPOST['subcategoria_id'];
 		$objeto = new LojasSubcategoriaProdutos();
-		$objeto->loja_id = $paramsPOST['loja_id'];
-		$objeto->subcategoria_id = $paramsPOST['subcategoria_id'];
-		$salvou = $objeto->save();
-		echo $salvou;
+		$flagExiste = $objeto->consultaVinculo($loja_id,$subcategoria_id);
+		if($flagExiste != NULL){
+			echo "999";
+		}else{		
+			$objeto->loja_id = $paramsPOST['loja_id'];
+			$objeto->subcategoria_id = $paramsPOST['subcategoria_id'];
+			$salvou = $objeto->save();
+			echo $salvou;
+		}
 	}
 	public function actionAdiciona(){
 		$paramsPOST = Yii::$app->request->post();

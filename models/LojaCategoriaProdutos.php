@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\Query;
 
 /**
  * This is the model class for table "lojas_categoriaprodutos".
@@ -60,5 +61,20 @@ class LojaCategoriaProdutos extends \yii\db\ActiveRecord
     public function getLoja()
     {
         return $this->hasOne(Loja::className(), ['id' => 'loja_id']);
+    }
+    /**
+        *verifica se existe um vínculo entre loja e categoria
+        *@param $loja_id: ID da loja
+        *@param $categoria_id: ID da categoria
+        *@return $vinculo: o vinculo em si ou NULL, para o caso de não existir
+    */
+    public function consultaVinculo($loja_id,$categoria_id){
+        $query = new Query();
+        $vinculo = $query->select("main.*")
+                         ->from("lojas_categoriaprodutos main")
+                         ->where(['loja_id' => $loja_id])
+                         ->andWhere(['categoria_id' => $categoria_id])
+                         ->one();
+        return $vinculo;
     }
 }
