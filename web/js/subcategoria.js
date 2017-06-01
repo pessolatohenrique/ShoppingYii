@@ -1,4 +1,20 @@
-/*adiciona uma etique visual no painel de subcategorias*/
+/**
+	*adiciona uma etique visual no painel de subcategorias
+	*@param: categoria_id: ID da categoria relacionada
+	*@param: subcategoria_nome: String a ser salva, com o nome da subcategoria
+*/
+function adicionaSubcategoria(categoria_id,subcategoria_nome){
+	var action = "index.php?r=subcategoria/adiciona";
+	var params = {"categoria_id":categoria_id,"nome":subcategoria_nome};
+	$.post(action,params,function(data){
+		if(data == '999'){
+			alert("Subcategoria já existente! Por favor verifique");
+		}
+		$("#modalAddSubcategoria").modal('hide');
+	}).error(function(){
+		alert("Erro ao adicionar subcategoria! Contate o desenvolvedor!");
+	})
+}
 function adicionaEtiqueta(id,nome,link){
 	var painel = $(link).parent();
 	console.log(painel);
@@ -114,7 +130,7 @@ function mainSubcategoria(){
 		var categoria_id = $("#categoria_id").val();
 		vinculaLojaCategoria(loja_id,categoria_id);
 	});
-	$("#linkModalSub").on("click",function(){
+	$(".linkModalSub").on("click",function(){
 		link_painel = $(this);
 	});
 	$("#salvar_dialog").on("click",function(){
@@ -142,6 +158,11 @@ function mainSubcategoria(){
 		var loja_id = $("#loja_id").val();
 		var subcategoria_id = $("#subcategoria_vinculo option:selected").val();
 		vinculaSubcategoriaLoja(loja_id,subcategoria_id,link_painel);
+	});
+	$("#salvar_dialog_sub_add").on("click",function(){
+		var categoria_id = $("#categoria_vinculo_add").val();
+		var subcategoria_nome = $("#subcategoria_vinculo_add").val();
+		adicionaSubcategoria(categoria_id,subcategoria_nome);
 	});
 }
 $(document).ready(function(){

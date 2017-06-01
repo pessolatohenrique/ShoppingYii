@@ -82,4 +82,20 @@ class SubCategoriaProduto extends \yii\db\ActiveRecord
                                ->all();
         return $subcategorias;
     }
+    /**
+        *consulta uam subcategoria através de seu nome
+        *@param categoria_id -> id da categoria 
+        *@param nome -> nome da subcategoria
+        *@return $subcategoria -> caso existir, retorna a subcategoria 
+    */
+    public function consultaPorNome($categoria_id,$nome){
+        $query = new Query();
+        $subcategoria = $query->select("sub.*")
+                              ->from("subcategoriaprodutos sub")
+                              ->where(["sub.categoria_id" => $categoria_id])
+                              ->andWhere(['nome' => $nome])
+                              ->one();
+        return $subcategoria;
+
+    }
 }

@@ -24,4 +24,18 @@ class SubcategoriaController extends \yii\web\Controller
 		$salvou = $objeto->save();
 		echo $salvou;
 	}
+	public function actionAdiciona(){
+		$paramsPOST = Yii::$app->request->post();
+		$categoria_id = $paramsPOST['categoria_id'];
+		$subcategoria_nome = $paramsPOST['nome'];
+		$subObj = new SubCategoriaProduto();
+		$flagExiste = $subObj->consultaPorNome($categoria_id,$subcategoria_nome);
+		if($flagExiste == false){
+			$subObj->categoria_id = $paramsPOST['categoria_id'];
+			$subObj->nome = $paramsPOST['nome'];
+			$subObj->save();
+		}else{
+			echo "999";
+		}
+	}
 }
