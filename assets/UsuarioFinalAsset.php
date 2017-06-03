@@ -15,7 +15,7 @@ class UsuarioFinalAsset extends AssetBundle{
 		'css/formulario.css'
 	];
 	public $js = [
-		'https://use.fontawesome.com/b17cc3a995.js','js/anuncio.js', 'js/abasCinema.js','js/gastronomia.js','js/lojas.js'
+		'https://use.fontawesome.com/b17cc3a995.js','js/utils.js','js/anuncio.js', 'js/abasCinema.js','js/gastronomia.js','js/lojas.js'
 	];
 	public $depends = [
 		'yii\web\JqueryAsset'

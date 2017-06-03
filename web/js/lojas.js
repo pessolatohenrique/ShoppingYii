@@ -32,6 +32,11 @@ function mainLoja(){
 		var palavra = $(this).val();
 		buscaPorNomeServidor(palavra);
 	});
+	$(".minimizarPainel_user").on("click",function(event){
+		event.preventDefault();
+		var link = $(this);
+		minimizaPainel(link,false);
+	});
 }
 $(document).ready(function(){
 	mainLoja();

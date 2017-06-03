@@ -9,9 +9,14 @@ function alteraIconePainel(link){
 	}
 }
 /*minimiza o painel com efeito em jQuery se slidedown*/
-function minimizaPainel(link){
+function minimizaPainel(link,flagBootstrap){
 	var painel_heading = link.parent();
-	var painel_body = painel_heading.siblings(".panel-body");
+	var classe = ".panel-body";
+	if(flagBootstrap == false){
+		classe = ".painel_corpo";
+	}
+	var painel_body = painel_heading.siblings(classe);
+	console.log(painel_body);
 	painel_body.slideToggle(800);
 	alteraIconePainel(link);
 }

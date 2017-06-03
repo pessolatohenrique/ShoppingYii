@@ -63,7 +63,7 @@ class SubCategoriaProduto extends \yii\db\ActiveRecord
                                 ->join("INNER JOIN","subcategoriaprodutos sub","main.subcategoria_id = sub.id")
                                 ->join("INNER JOIN","categoriaprodutos cat","sub.categoria_id = cat.id")
                                 ->where(["main.loja_id" => $loja_id])
-                                ->orderBy("categoria_id ASC","subcategoria_nome ASC")
+                                ->orderBy("subcategoria_nome ASC")
                                 ->all();
         return $subcategorias;
     }

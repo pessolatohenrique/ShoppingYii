@@ -38,3 +38,45 @@ $this->title = "Shopping | ".$model['nome_loja'];
 		</ul>
 	</section>
 </section>
+<section class="subcategoriaConsulta">
+	<h3>Categorias de Produtos</h3>
+	<p>
+		Confira abaixo as categorias e subcategorias de produtos oferecidos pela loja. As informações aqui apresentadas podem sofrer variações
+	</p>
+	<?php 
+	foreach($categorias_salvas as $key => $val): 
+	?>
+		<div class="painel">
+			<div class="painel_cabecalho"><?=$val['categoria_nome']?>
+                <a href="#" class="minimizarPainel_user">
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                </a>
+			</div>
+			<div class="painel_corpo subcategorias_usuario">
+			<?php
+			if(count($subcategorias) > 0):
+			?>
+				<ul>
+				<?php
+				foreach($subcategorias as $chave => $valor):
+					if($val['categoria_id'] == $valor['categoria_id']):
+				?>
+						<li><?=$valor['subcategoria_nome']?></li>
+				<?php
+					endif;
+				endforeach;
+				?>
+				</ul>
+			<?php
+			else:
+			?>
+				<p>Sem subcategorias vinculadas</p>
+			<?php
+			endif;
+			?>
+			</div>
+		</div>
+	<?php
+	endforeach;
+	?>
+</section>
