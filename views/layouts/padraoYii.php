@@ -38,7 +38,7 @@ AppAsset::register($this);
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?=Url::base()?>/index.php?r=categoria/create">Categoria</a></li>
-                        <li><a href="#">Filme</a></li>
+                        <li><a href="<?=Url::base()?>/index.php?r=filme/create">Filme</a></li>
                         <li><a href="<?=Url::base()?>/index.php?r=gastronomia/create">Gastronomia</a></li>
                         <li><a href="<?=Url::base()?>/index.php?r=loja/create">Loja</a></li>
                     </ul>
@@ -48,7 +48,7 @@ AppAsset::register($this);
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?=Url::base()?>/index.php?r=categoria">Categoria</a></li>
-                        <li><a href="#">Filme</a></li>
+                        <li><a href="<?=Url::base()?>/index.php?r=filme">Filme</a></li>
                         <li><a href="<?=Url::base()?>/index.php?r=gastronomia">Gastronomia</a></li>
                         <li><a href="<?=Url::base()?>/index.php?r=loja">Loja</a></li>
                     </ul>
