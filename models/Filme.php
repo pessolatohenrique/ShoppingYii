@@ -78,6 +78,39 @@ class Filme extends \yii\db\ActiveRecord
     */
     public function lista($fields,$filtros = array()){
         $query = new Query();
+        /*filtragem de campos*/
+        if(!isset($filtros['status']) || $filtros['status'] == 1){
+            $query->andWhere(['fi.status_id' => 1]);
+        }
+        if(isset($filtros['titulo']) && $filtros['titulo'] != ""){
+            $titulo = $filtros['titulo'];
+            $query->andWhere(['like','fi.titulo',$titulo]);
+        }        
+        if(isset($filtros['genero']) && count($filtros['genero']) > 0){
+            $generos = $filtros['genero'];
+            $query->andWhere(['in','fi.genero_id',$generos]);
+        }
+        if(isset($filtros['estudio']) && count($filtros['estudio']) > 0){
+            $estudios = $filtros['estudio'];
+            $query->andWhere(['in','fi.distribuidora_id',$estudios]);
+        }
+        if(isset($filtros['diretor']) && count($filtros['diretor']) > 0){
+            $diretores = $filtros['diretor'];
+            $query->andWhere(['in','fi.diretor_id',$diretores]);
+        }
+        if(isset($filtros['status']) && count($filtros['status']) > 0){
+            $status = $filtros['status'];
+            $query->andWhere(['fi.status_id' => $status]);
+        }
+        if(isset($filtros['classificacao']) && count($filtros['classificacao']) > 0){
+            $classificacoes = $filtros['classificacao'];
+            $query->andWhere(['fi.classificacao_id' => $classificacoes]);
+        }
+        if(isset($filtros['duracao']) && count($filtros['duracao']) > 0){
+            $duracao = $filtros['duracao'];
+            $query->andWhere(['>=','fi.duracao',$duracao]);
+        }
+        /*fim da filtragem de campos*/
         $filmes = $query
         ->select($fields)
         ->from("filmes fi")
@@ -86,7 +119,7 @@ class Filme extends \yii\db\ActiveRecord
         ->leftJoin("status_exibicao stu","fi.status_id = stu.id")
         ->leftJoin("distribuidoras est","fi.distribuidora_id = est.id")
         ->leftJoin("diretores dir","fi.diretor_id = dir.id")
-        ->where(["fi.status_id" => 1])
+        // ->where(["fi.status_id" => 1])
         ->orderBy("fi.titulo")
         ->all();
         return $filmes;

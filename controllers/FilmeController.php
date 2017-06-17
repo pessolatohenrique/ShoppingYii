@@ -45,8 +45,13 @@ class FilmeController extends Controller
         $statusObj = new StatusExibicao();
         $classificacaoObj = new ClassificacaoIndicativa();
         $fields = "clas.descricao AS classificacao,gen.descricao AS genero_nome,stu.descricao AS status_exibicao,est.nome AS estudio_nome, dir.nome AS diretor_nome,fi.id,fi.status_id,fi.genero_id,fi.distribuidora_id,fi.diretor_id,fi.classificacao_id,fi.titulo,fi.duracao";
+        $filtros = array();
+        if(Yii::$app->request->post()){
+            $paramsPOST = Yii::$app->request->post();
+            $filtros = $paramsPOST['Filme'];
+        }
         return $this->render('index', [
-            'filmes' => $filmeObj->lista($fields),
+            'filmes' => $filmeObj->lista($fields,$filtros),
             'generos' => $generoObj->listaRelFilmes(),
             'distribuidoras' => $estudioObj->listaRelFilmes(),
             'diretores' => $diretorObj->listaRelFilmes(),
