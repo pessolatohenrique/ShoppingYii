@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Foto;
 use app\models\Filme;
 use app\models\Genero;
 use app\models\Distribuidora;
@@ -80,12 +81,21 @@ class FilmeController extends Controller
     public function actionCreate()
     {
         $model = new Filme();
+        $model_foto = new Foto();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $arquivo = $model_foto->salvaFotoFilme($model);
+            return $this->redirect(['index']);
         } else {
+            
             return $this->render('create', [
                 'model' => $model,
+                'model_foto' => $model_foto,
+                'generos' => Genero::find()->orderBy('descricao')->all(),
+                'estudios' => Distribuidora::find()->orderBy('nome')->all(),
+                'diretores' => Diretor::find()->orderBy('nome')->all(),
+                'status' => StatusExibicao::find()->orderBy('id')->all(),
+                'classificacoes' => ClassificacaoIndicativa::find()->orderBy('id')->all()
             ]);
         }
     }

@@ -60,4 +60,18 @@ class Foto extends \yii\db\ActiveRecord
         $uploadPath = Yii::getAlias('@webroot/arquivos');
         $this->arquivoFoto->saveAs($uploadPath.'/'.$this->arquivoFoto->name);
     }
+    /*Realiza o upload e salva informações de foto para os filmes*/
+    public function salvaFotoFilme($filmeObj){
+        $this->arquivoFoto = UploadedFile::getInstance($this,'nome_arquivo');
+        $nome_arquivo = $this->arquivoFoto->name;
+        $nome_arquivo = $this->retiraAcentos($nome_arquivo);
+        $nome_arquivo = html_entity_decode($nome_arquivo);
+        $nome_arquivo = strtolower($nome_arquivo);
+        $nome_arquivo = trim($nome_arquivo);
+        $nome_arquivo = str_replace(" ", "", $nome_arquivo);
+        $uploadPath = Yii::getAlias('@webroot/arquivos');
+        $this->arquivoFoto->saveAs($uploadPath.'/'.$nome_arquivo);
+        $filmeObj->arquivo = $nome_arquivo;
+        $filmeObj->save();
+    }
 }
