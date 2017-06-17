@@ -4,6 +4,11 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Filme;
+use app\models\Genero;
+use app\models\Distribuidora;
+use app\models\Diretor;
+use app\models\StatusExibicao;
+use app\models\ClassificacaoIndicativa;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -34,18 +39,19 @@ class FilmeController extends Controller
     public function actionIndex()
     {
         $filmeObj = new Filme();
-        /*'id' => string '1' (length=1)
-      'status_id' => string '1' (length=1)
-      'genero_id' => string '2' (length=1)
-      'distribuidora_id' => string '4' (length=1)
-      'diretor_id' => string '5' (length=1)
-      'classificacao_id' => string '3' (length=1)
-      'titulo' => string 'Mulher Maravilha' (length=16)
-      'duracao' => string '140' (length=3)
-      'sinopse' => string 'Princesa e Embaixadora das Amazonas da Ilha Paraíso, ela foi mandada ao “mundo dos homens” para propagar a paz, sendo a defensora da verdade e da vida na luta entre os homens e o firmamento, entre os mortais e */
+        $generoObj = new Genero();
+        $estudioObj = new Distribuidora();
+        $diretorObj = new Diretor();
+        $statusObj = new StatusExibicao();
+        $classificacaoObj = new ClassificacaoIndicativa();
         $fields = "clas.descricao AS classificacao,gen.descricao AS genero_nome,stu.descricao AS status_exibicao,est.nome AS estudio_nome, dir.nome AS diretor_nome,fi.id,fi.status_id,fi.genero_id,fi.distribuidora_id,fi.diretor_id,fi.classificacao_id,fi.titulo,fi.duracao";
         return $this->render('index', [
-            'filmes' => $filmeObj->lista($fields)
+            'filmes' => $filmeObj->lista($fields),
+            'generos' => $generoObj->listaRelFilmes(),
+            'distribuidoras' => $estudioObj->listaRelFilmes(),
+            'diretores' => $diretorObj->listaRelFilmes(),
+            'status_exibicao' => $statusObj->listaRelFilmes(),
+            'classificacoes' => $classificacaoObj->listaRelFilmes()
         ]);
     }
 
