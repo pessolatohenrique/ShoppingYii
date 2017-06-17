@@ -94,39 +94,51 @@ $this->params['breadcrumbs'][] = "Filmes";
         <button type="reset" class="btn btn-warning">Limpar</button>
     <?php ActiveForm::end(); ?>
     <br>
-    <table class="table table-bordered">
-        <thead>
-            <tr class="bg-info">
-                <th>Título</th>
-                <th>Gênero</th>
-                <th>Classificação</th>
-                <th>Duração</th>
-                <th>Status</th>
-                <th>Estúdio</th>
-                <th>Diretor</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php 
-        foreach($filmes as $key => $val):
-        ?>
-            <tr>
-                <td>
-                    <a href="#">
-                        <?=$val['titulo']?>
-                    </a>
-                </td>
-                <td><?=$val['genero_nome']?></td>
-                <td><?=$val['classificacao']?></td>
-                <td><?=$val['duracao']?> minutos</td>
-                <td><?=$val['status_exibicao']?></td>
-                <td><?=$val['estudio_nome']?></td>
-                <td><?=$val['diretor_nome']?></td>
-               
-            </tr>
-        <?php
-        endforeach;
-        ?>
-        </tbody>
-    </table>
+    <?php
+    if(count($filmes) == 0):
+    ?>
+        <div class="alert alert-info">
+            Nenhum filme encontrado em sua pesquisa. 
+        </div>
+    <?php
+    else:
+    ?>
+        <table class="table table-bordered">
+            <thead>
+                <tr class="bg-info">
+                    <th>Título</th>
+                    <th>Gênero</th>
+                    <th>Classificação</th>
+                    <th>Duração</th>
+                    <th>Status</th>
+                    <th>Estúdio</th>
+                    <th>Diretor</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php 
+            foreach($filmes as $key => $val):
+            ?>
+                <tr>
+                    <td>
+                        <a href="#">
+                            <?=$val['titulo']?>
+                        </a>
+                    </td>
+                    <td><?=$val['genero_nome']?></td>
+                    <td><?=$val['classificacao']?></td>
+                    <td><?=$val['duracao']?> minutos</td>
+                    <td><?=$val['status_exibicao']?></td>
+                    <td><?=$val['estudio_nome']?></td>
+                    <td><?=$val['diretor_nome']?></td>
+                   
+                </tr>
+            <?php
+            endforeach;
+            ?>
+            </tbody>
+        </table>
+    <?php
+    endif;
+    ?>
 </div>

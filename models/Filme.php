@@ -45,7 +45,7 @@ class Filme extends \yii\db\ActiveRecord
             [['titulo'], 'required'],
             [['titulo'], 'string', 'max' => 200],
             [['duracao'], 'string', 'max' => 3],
-            [['sinopse', 'trailer', 'arquivo'], 'string', 'max' => 255],
+            [['sinopse', 'trailer', 'arquivo'], 'string'],
             [['titulo'], 'unique']
         ];
     }
