@@ -1,45 +1,48 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Filme */
 
-$this->title = $model->id;
+$this->title = "Shopping | ".$filme_consulta['titulo'];
 $this->params['breadcrumbs'][] = ['label' => 'Filmes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = $filme_consulta['titulo'];
 ?>
 <div class="filme-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'status_id',
-            'genero_id',
-            'distribuidora_id',
-            'diretor_id',
-            'classificacao_id',
-            'titulo',
-            'duracao',
-            'sinopse',
-            'trailer',
-            'arquivo',
-        ],
-    ]) ?>
-
+    <section class="informacoes-filme">
+        <div class="row">
+            <div class="col-md-2 colunaPoster">
+                <figure>
+                    <img src="<?=Url::base()?>/arquivos/<?=$filme_consulta['arquivo']?>" alt="Pôster do filme <?=$filme_consulta['titulo']?>">
+                    <figcaption>Pôster do Filme</figcaption>
+                </figure>
+            </div>
+            <div class="col-md-10 colunaInfoFilme">
+                <h1><?=$filme_consulta['titulo']?></h1>
+                <ul class="etiquetas-filme">
+                    <li class="<?=$classe_status?>"><?=$filme_consulta['status_exibicao']?></li>
+                    <li class="<?=$classe_classificacao?>"><?=$classificacao?></li>
+                    <li><?=$filme_consulta['genero_nome']?></li>
+                    <li><?=$filme_consulta['duracao']?> minutos</li>
+                </ul>
+                <p>
+                    <strong>Diretor: </strong><?=$filme_consulta['diretor_nome']?><br>
+                    <strong>Estúdio: </strong><?=$filme_consulta['estudio_nome']?><br>
+                    <strong>Elenco: </strong>Gal Gadot, Chris Pine, Connie Nielsen<br>
+                    <strong>Sinopse: </strong><br>
+                    <?=$filme_consulta['sinopse']?>
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="trailer-filme">
+        <fieldset>
+            <legend>Trailer</legend>
+            <p>Confira abaixo o trailer do filme</p>     
+            <iframe width="700" height="415" src="<?=$video_trailer?>" frameborder="0" allowfullscreen></iframe>
+        </fieldset>
+    </section>
 </div>

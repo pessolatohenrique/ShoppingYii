@@ -1,0 +1,80 @@
+.informacoes-filme img{
+    width: 210px;
+    height: 312px;
+}
+.colunaPoster{
+	width: 19.5%;
+}
+.colunaInfoFilme{
+	width: 77%;
+	box-sizing: border-box;
+}
+.colunaInfoFilme h1{
+	margin-top: 0.1em;
+	margin-bottom: 0;
+}
+.etiquetas-filme{
+	padding-left: 0;
+}
+.etiquetas-filme li{
+	display: inline-block;
+	border: 3px solid #A4B3EE;
+	color: #00688B;
+	border-radius: 3px;
+	box-sizing: border-box;
+	padding: 0.3em 0.5em 0.3em 0.5em;
+	margin-right: 0.3em;
+	text-align: center;
+	cursor: pointer;
+}
+.status-exibicao{
+	background-color: #228B22;
+	border-color: #228B22 !important;
+	color: white !important;
+}
+.status-em-breve{
+	background-color: #CD6600;
+	border-color: #CD6600 !important;
+	color: white !important;
+}
+.status-desativado{
+	background-color: #8B3E2F;
+	border-color: #8B3E2F !important;
+	color: white !important;
+}
+.classificacao-livre{
+	background-color: #0b2 !important;
+	border-color: #0b2 !important;
+	color: white !important;
+}
+.classificacao-10{
+	background-color: #5891cd !important;
+	border-color: #5891cd !important;
+	color: white !important;
+}
+.classificacao-12{
+	background-color: #edcb0c !important;
+	border-color: #edcb0c !important;
+	color: white !important;
+}
+.classificacao-14{
+	background-color: #f6962d !important;
+	border-color: #f6962d !important;
+	color: white !important;
+}
+.classificacao-16{
+	background-color: #8B8383 !important;
+	border-color: #8B8383 !important;
+	color: white !important;
+}
+.classificacao-18{
+	background-color: #1C1C1C !important;
+	border-color: #1C1C1C !important;
+	color: white !important;
+}
+.trailer-filme{
+	margin-top: 1em;
+}
+.trailer-filme legend{
+	margin-bottom: 0.5em;
+}

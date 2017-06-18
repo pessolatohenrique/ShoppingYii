@@ -68,8 +68,19 @@ class FilmeController extends Controller
      */
     public function actionView($id)
     {
+        $fields = "clas.descricao AS classificacao,gen.descricao AS genero_nome,stu.descricao AS status_exibicao,est.nome AS estudio_nome, dir.nome AS diretor_nome,fi.id,fi.status_id,fi.genero_id,fi.distribuidora_id,fi.diretor_id,fi.classificacao_id,fi.titulo,fi.duracao, fi.sinopse,fi.arquivo,fi.trailer";
+        $filmeObj = new Filme();
+        $filme_consulta = $filmeObj->consulta($fields,$id);
+        $classificacao = $filmeObj->verificaClassificacao($filme_consulta['classificacao']);
+        $classe_classificacao = $filmeObj->verificaClasseClassificacao($classificacao);
+        $classe_status = $filmeObj->verificaClasseStatus($filme_consulta['status_id']);
+        $video_trailer = $filmeObj->getLinkTrailer($filme_consulta['trailer']);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'filme_consulta' => $filmeObj->consulta($fields,$id),
+            'classificacao' => $classificacao,
+            'classe_classificacao' => $classe_classificacao,
+            'classe_status' => $classe_status,
+            'video_trailer' => $video_trailer
         ]);
     }
 

@@ -121,7 +121,7 @@ $this->params['breadcrumbs'][] = "Filmes";
             ?>
                 <tr>
                     <td>
-                        <a href="#">
+                        <a href="<?=Url::base()?>/index.php?r=filme/view&id=<?=$val['id']?>">
                             <?=$val['titulo']?>
                         </a>
                     </td>

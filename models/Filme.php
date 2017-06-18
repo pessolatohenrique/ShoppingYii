@@ -124,4 +124,85 @@ class Filme extends \yii\db\ActiveRecord
         ->all();
         return $filmes;
     }
+    /**
+        *realiza a consulta de um filme, com base nos campos e id
+        *@param $fields: campos a serem buscados
+        *@param $filme_id: id do filme a ser buscado
+        *@return $filme: filme consultado 
+    */
+    public function consulta($fields,$id){
+        $query = new Query();
+        $filme = $query
+        ->select($fields)
+        ->from("filmes fi")
+        ->leftJoin("classificacoes_indicativas clas","fi.classificacao_id = clas.id")
+        ->leftJoin("generos gen","fi.genero_id = gen.id")
+        ->leftJoin("status_exibicao stu","fi.status_id = stu.id")
+        ->leftJoin("distribuidoras est","fi.distribuidora_id = est.id")
+        ->leftJoin("diretores dir","fi.diretor_id = dir.id")
+        ->where(['fi.id' => $id])
+        ->one();
+        return $filme;
+    }
+    /**
+        *transforma a classificação para mostrar em tela
+        *Em caso de "Livre", deixar o texto;
+        *Caso contrário, imprimir apenas a idade
+        *@param $strClassificacao: String da Classificação
+        *@return $nova_classificacao: Classificação transformada
+    */
+    public function verificaClassificacao($strClassificacao){
+        $strClassificacao = strtolower($strClassificacao);
+        switch($strClassificacao){
+            case 'livre': $nova_classificacao = "Livre"; break;
+            default: $nova_classificacao = substr($strClassificacao, 0,2);break;
+        }
+        return $nova_classificacao;
+    }
+    /**
+        *verifica a classe CSS para a classificação
+        *o objetivo é adaptar a cor corretamente, de acordo com a classificação fornecida
+        *@param $strClassificacao: String da Classificacao
+        *@return $classe: Classe CSS correspondente à classificação
+    */
+    public function verificaClasseClassificacao($strClassificacao){
+        $classe = "classificacao-livre";
+        switch($strClassificacao){
+            case '10': $classe = "classificacao-10";break;
+            case '12': $classe = "classificacao-12";break;
+            case '14': $classe = "classificacao-14";break;
+            case '16': $classe = "classificacao-16";break;
+            case '18': $classe = "classificacao-18";break;
+        }
+        return $classe;
+    }
+    /**
+        *verifica a classe CSS para o status
+        *o objetivo é adaptar a cor correspondente, de acordo com o status fornecido
+        *@param $status_id: ID do status
+        *@return $classe: Classe CSS correspondente ao status
+    */
+    public function verificaClasseStatus($status_id){
+        $classe = "status-exibicao";
+        switch($status_id){
+            case 2: $classe = "status-em-breve";break;
+            case 3: $classe = "status-desativado";break;
+        }
+        return $classe;
+    }
+    /**
+        *obtem o link do vídeo para ser incorporado a página
+        *o objetivo é obdecer corretamente a ferramenta de incorporação do youtube
+        *Anterior: https://www.youtube.com/watch?v=H8d1pD49JOk
+        *Novo, para incorporar: https://www.youtube.com/embed/H8d1pD49JOk
+        *@param $link: Link no formato comum
+        *@return $link_format: link no formato de incorporação
+    */
+    public function getLinkTrailer($link){
+        $link_format = "";
+        $link_explode = explode("?",$link);
+        $link_explode[1] = str_replace("v=", "", $link_explode[1]);
+        $link_format = "https://www.youtube.com/embed/".$link_explode[1];
+        return $link_format;
+    }
 }
