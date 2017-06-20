@@ -119,12 +119,18 @@ class FilmeController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $model_foto = new Foto();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'model_foto' => $model_foto,
+                'generos' => Genero::find()->orderBy('descricao')->all(),
+                'estudios' => Distribuidora::find()->orderBy('nome')->all(),
+                'diretores' => Diretor::find()->orderBy('nome')->all(),
+                'status' => StatusExibicao::find()->orderBy('id')->all(),
+                'classificacoes' => ClassificacaoIndicativa::find()->orderBy('id')->all()
             ]);
         }
     }
@@ -135,11 +141,11 @@ class FilmeController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete()
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+       $filme_id = Yii::$app->request->post('filme_id');
+       $this->findModel($filme_id)->delete();
+       echo "ok";
     }
 
     /**

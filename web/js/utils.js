@@ -23,3 +23,23 @@ function minimizaPainel(link,flagBootstrap){
 function adicionaItemCombo(seletor,texto,valor){
 	$(seletor).append($("<option>").text(texto).val(valor));
 }
+function verificaConfirm(mensagem,link,tipo_acao){
+	var resp = window.confirm(mensagem);
+	if(resp == 1){
+		switch(tipo_acao){
+			case 'form': $(link).parent().submit();break;
+		}
+	}
+}
+function excluiLinhaTabela(linha){
+	$(linha).fadeOut(600,function(){
+		$(linha).remove();
+	});
+}
+$(".linkConfirmForm").on("click",function(event){
+	event.preventDefault();
+	var mensagem = "Deseja realmente executar esta ação?";
+	var link = $(this);
+	var tipo = "form";
+	verificaConfirm(mensagem,link,tipo);
+});

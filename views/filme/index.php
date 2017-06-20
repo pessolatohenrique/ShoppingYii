@@ -113,6 +113,7 @@ $this->params['breadcrumbs'][] = "Filmes";
                     <th>Status</th>
                     <th>Estúdio</th>
                     <th>Diretor</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -131,7 +132,15 @@ $this->params['breadcrumbs'][] = "Filmes";
                     <td><?=$val['status_exibicao']?></td>
                     <td><?=$val['estudio_nome']?></td>
                     <td><?=$val['diretor_nome']?></td>
-                   
+                   <td>
+                        <a href="<?=Url::base();?>/index.php?r=filme/update&id=<?=$val['id']?>">
+                            <i class="fa fa-pencil-square-o fa" aria-hidden="true"></i>
+                        </a>   
+                        <a href="#" class="link_exclui_filme">
+                            <input type="hidden" class="filme_id" value="<?=$val['id']?>">
+                            <i class="fa fa-trash-o fa" aria-hidden="true"></i>
+                        </a>         
+                    </td>
                 </tr>
             <?php
             endforeach;

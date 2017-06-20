@@ -23,7 +23,10 @@ use yii\widgets\ActiveForm;
                     <label for="genero">Gênero</label>
                     <select name="Filme[genero_id]" class="form-control comboSearch" id="genero">
                         <?php foreach($generos as $key => $val): ?>
-                            <option value="<?=$val->id?>"><?=$val->descricao?></option>
+                            <option value="<?=$val->id?>"
+                            <?=$val->id == $model->genero_id?"selected":""?>>
+                                <?=$val->descricao?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -33,7 +36,10 @@ use yii\widgets\ActiveForm;
                     <label for="estudio">Estúdio</label>
                     <select name="Filme[distribuidora_id]" class="form-control comboSearch" id="estudio">
                         <?php foreach($estudios as $key => $val): ?>
-                            <option value="<?=$val->id?>"><?=$val->nome?></option>
+                            <option value="<?=$val->id?>"
+                            <?=$val->id == $model->distribuidora_id?"selected":""?>>
+                                <?=$val->nome?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -48,7 +54,10 @@ use yii\widgets\ActiveForm;
                     <label for="diretor">Diretor</label>
                     <select name="Filme[diretor_id]" class="form-control comboSearch" id="diretor">
                         <?php foreach($diretores as $key => $val): ?>
-                            <option value="<?=$val->id?>"><?=$val->nome?></option>
+                            <option value="<?=$val->id?>"
+                            <?=$val->id == $model->diretor_id?"selected":""?>>
+                                <?=$val->nome?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -58,7 +67,10 @@ use yii\widgets\ActiveForm;
                     <label for="genero">Status</label>
                     <select name="Filme[status_id]" class="form-control comboSearch" id="status">
                         <?php foreach($status as $key => $val): ?>
-                            <option value="<?=$val->id?>"><?=$val->descricao?></option>
+                            <option value="<?=$val->id?>"
+                            <?=$val->id == $model->status_id?"selected":""?>>
+                                <?=$val->descricao?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -68,7 +80,10 @@ use yii\widgets\ActiveForm;
                     <label for="genero">Classificação Indicativa</label>
                     <select name="Filme[classificacao_id]" class="form-control comboSearch" id="classificacao">
                         <?php foreach($classificacoes as $key => $val): ?>
-                            <option value="<?=$val->id?>"><?=$val->descricao?></option>
+                            <option value="<?=$val->id?>"
+                            <?=$val->id == $model->classificacao_id?"selected":""?>>
+                                <?=$val->descricao?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -83,7 +98,7 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
     </fieldset>
-    <button type="submit" class="btn btn-primary">Adicionar</button>
+    <button type="submit" class="btn btn-primary linkConfirmForm"><?=isset($model['id'])?"Atualizar":"Adicionar"?></button>
     <button type="reset" class="btn btn-warning">Limpar</button>
     <?php ActiveForm::end(); ?>
 </div>
