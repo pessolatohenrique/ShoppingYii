@@ -37,7 +37,7 @@ function validaCampo(seletor,campo){
 	form_group.find("div.help-block").remove();
 	form_group.addClass("has-error");
 	form_group.find("label").css("color","#a94442");
-	nova_div.addClass("help-block").text("O campo "+campo+" não estar vazio");
+	nova_div.addClass("help-block").text("O campo "+campo+" não pode estar vazio");
 	form_group.append(nova_div);
 }
 function excluiLinhaTabela(linha){
