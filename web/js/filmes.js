@@ -15,8 +15,7 @@ function mainFilmes(){
 		var filme_id = $(this).find(".filme_id").val();
 		var link = $(this);
 		excluiFilmeServidor(filme_id,link);
-		
-	})
+	});
 }
 $(document).ready(function(){
 	mainFilmes();

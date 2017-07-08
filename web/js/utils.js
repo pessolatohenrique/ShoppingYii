@@ -21,7 +21,7 @@ function minimizaPainel(link,flagBootstrap){
 	alteraIconePainel(link);
 }
 function adicionaItemCombo(seletor,texto,valor){
-	$(seletor).append($("<option>").text(texto).val(valor));
+	$(seletor).prepend($("<option>").text(texto).val(valor));
 }
 function verificaConfirm(mensagem,link,tipo_acao){
 	var resp = window.confirm(mensagem);
@@ -30,6 +30,15 @@ function verificaConfirm(mensagem,link,tipo_acao){
 			case 'form': $(link).parent().submit();break;
 		}
 	}
+}
+function validaCampo(seletor,campo){
+	var form_group = $(seletor).parent();
+	var nova_div = $("<div>");
+	form_group.find("div.help-block").remove();
+	form_group.addClass("has-error");
+	form_group.find("label").css("color","#a94442");
+	nova_div.addClass("help-block").text("O campo "+campo+" não estar vazio");
+	form_group.append(nova_div);
 }
 function excluiLinhaTabela(linha){
 	$(linha).fadeOut(600,function(){
