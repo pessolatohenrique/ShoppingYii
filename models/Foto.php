@@ -48,7 +48,7 @@ class Foto extends \yii\db\ActiveRecord
     }
     /*Retira os acentos de nomes*/
     public function retiraAcentos($string){
-        return preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"),$string);
+        return preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", "/(ç)/"),explode(" ","a A e E i I o O u U n N c"),$string);
     }
     /*Realiza o upload e salva informações de foto para uma loja*/
     public function salvaFoto($lojaObj){
@@ -73,6 +73,7 @@ class Foto extends \yii\db\ActiveRecord
         $nome_arquivo = str_replace(" ", "", $nome_arquivo);
         $nome_arquivo = str_replace(":", "", $nome_arquivo);
         $nome_arquivo = str_replace("-", "", $nome_arquivo);
+        $nome_arquivo = str_replace(".", "", $nome_arquivo);
         $nome_arquivo = $nome_arquivo.".".$extencao[1];
         $uploadPath = Yii::getAlias('@webroot/arquivos');
         $this->arquivoFoto->saveAs($uploadPath.'/'.$nome_arquivo);

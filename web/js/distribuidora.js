@@ -1,4 +1,4 @@
-function adicionaGenero(descricao){
+function adicionaEstudio(descricao){
 	var action = "index.php?r=distribuidora/create";
 	var params = {"descricao":descricao};
 	$.post(action,params,function(data){
@@ -13,11 +13,11 @@ function adicionaGenero(descricao){
 		alert("Erro ao realizar requisição. Contate o desenvolvedor!");
 	});
 }
-function maindDistribuidora(){
+function mainDistribuidora(){
 	$("#btn_add_estudio").on("click",function(event){
 		var descricao = $("#estudio_dialog").val();
 		if(descricao != ""){
-			adicionaGenero(descricao);	
+			adicionaEstudio(descricao);	
 		}else{
 			validaCampo("#estudio_dialog","estúdio");
 		}
@@ -25,5 +25,5 @@ function maindDistribuidora(){
 	})
 }
 $(document).ready(function(){
-	maindDistribuidora();
+	mainDistribuidora();
 })
