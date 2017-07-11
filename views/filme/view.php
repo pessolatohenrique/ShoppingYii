@@ -31,7 +31,8 @@ $this->params['breadcrumbs'][] = $filme_consulta['titulo'];
                 <p>
                     <strong>Diretor: </strong><?=$filme_consulta['diretor_nome']?><br>
                     <strong>Estúdio: </strong><?=$filme_consulta['estudio_nome']?><br>
-                    <strong>Elenco: </strong>Gal Gadot, Chris Pine, Connie Nielsen<br>
+                    <strong>Elenco: </strong><?=$atores?>
+                    <br>
                     <strong>Sinopse: </strong><br>
                     <?=$filme_consulta['sinopse']?>
                 </p>

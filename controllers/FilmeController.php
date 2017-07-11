@@ -10,6 +10,7 @@ use app\models\Distribuidora;
 use app\models\Diretor;
 use app\models\StatusExibicao;
 use app\models\ClassificacaoIndicativa;
+use app\models\AtorFilme;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -70,17 +71,20 @@ class FilmeController extends Controller
     {
         $fields = "clas.descricao AS classificacao,gen.descricao AS genero_nome,stu.descricao AS status_exibicao,est.nome AS estudio_nome, dir.nome AS diretor_nome,fi.id,fi.status_id,fi.genero_id,fi.distribuidora_id,fi.diretor_id,fi.classificacao_id,fi.titulo,fi.duracao, fi.sinopse,fi.arquivo,fi.trailer";
         $filmeObj = new Filme();
+        $atorFilmeObj = new AtorFilme();
         $filme_consulta = $filmeObj->consulta($fields,$id);
         $classificacao = $filmeObj->verificaClassificacao($filme_consulta['classificacao']);
         $classe_classificacao = $filmeObj->verificaClasseClassificacao($classificacao);
         $classe_status = $filmeObj->verificaClasseStatus($filme_consulta['status_id']);
         $video_trailer = $filmeObj->getLinkTrailer($filme_consulta['trailer']);
+        $atores = $atorFilmeObj->listaAtores($id);
         return $this->render('view', [
             'filme_consulta' => $filmeObj->consulta($fields,$id),
             'classificacao' => $classificacao,
             'classe_classificacao' => $classe_classificacao,
             'classe_status' => $classe_status,
-            'video_trailer' => $video_trailer
+            'video_trailer' => $video_trailer,
+            'atores' => $atores
         ]);
     }
 
