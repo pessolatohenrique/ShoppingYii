@@ -86,4 +86,16 @@ class AtorFilme extends \yii\db\ActiveRecord
         }
         return $atores;
     }
+    /**
+        *consulta se existe vínculo entre filme e ator
+        *@param $filme_id: ID do filme a ser pesquisado
+        *@param $ator_id: ID do ator a ser pesquisado
+        *@return $ator: dados do ator se existir; NULL caso não existir
+    */
+    public function consulta($filme_id,$ator_id){
+        $vinculo = $this->find()->where(['filme_id' => $filme_id])
+                                ->andWhere(['ator_id' => $ator_id])
+                                ->one();
+        return $vinculo;
+    }
 }
