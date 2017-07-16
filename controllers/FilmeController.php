@@ -77,14 +77,17 @@ class FilmeController extends Controller
         $classe_classificacao = $filmeObj->verificaClasseClassificacao($classificacao);
         $classe_status = $filmeObj->verificaClasseStatus($filme_consulta['status_id']);
         $video_trailer = $filmeObj->getLinkTrailer($filme_consulta['trailer']);
-        $atores = $atorFilmeObj->listaAtores($id);
+        $atores = $atorFilmeObj->listaAtores($id,1);
+        $atores_tabela = $atorFilmeObj->listaAtores($id,0);
+        // var_dump($atores); die;
         return $this->render('view', [
             'filme_consulta' => $filmeObj->consulta($fields,$id),
             'classificacao' => $classificacao,
             'classe_classificacao' => $classe_classificacao,
             'classe_status' => $classe_status,
             'video_trailer' => $video_trailer,
-            'atores' => $atores
+            'atores' => $atores,
+            'atores_tabela' => $atores_tabela
         ]);
     }
 

@@ -68,23 +68,28 @@ class AtorFilme extends \yii\db\ActiveRecord
     /**
     *monta a string de atores.
     *@param $filme_id: ID do filme a ser pesquisado
+    *@param $formato_lista: se o retorno deve ser em formato de lista ou não
     *@return $atores: atores com seus personagens, separados por vírgula
         Exemplo: Gal Gadot (Mulher Maravilha), Cris Pine (Capitão Steve)
     */
-    public function listaAtores($filme_id){
+    public function listaAtores($filme_id,$formato_lista = 0){
         $relAtores = $this->find()->where(['filme_id' => $filme_id])->all();
-        $atores = "";
-        if(count($relAtores) > 0){
-            foreach($relAtores as $key => $val){
-                $atores = $atores.$val->ator->nome." (".$val->personagem."), ";
+        if($formato_lista == 1){
+            $atores = "";
+            if(count($relAtores) > 0){
+                foreach($relAtores as $key => $val){
+                    $atores = $atores.$val->ator->nome." (".$val->personagem."), ";
+                }
+                //remove a última vírgula
+                $atores = trim($atores);
+                $atores = substr($atores,0,-1);
+            }else{
+                $atores = "Nenhum ator vinculado a este filme";
             }
-            //remove a última vírgula
-            $atores = trim($atores);
-            $atores = substr($atores,0,-1);
+            return $atores;
         }else{
-            $atores = "Nenhum ator vinculado a este filme";
+            return $relAtores;
         }
-        return $atores;
     }
     /**
         *consulta se existe vínculo entre filme e ator

@@ -34,7 +34,19 @@ class Ator_filmeController extends Controller
             $atorFilmeObj->personagem = $paramsPOST['ator']['personagem'];
             $atorFilmeObj->save();
         }
-        $listaAtores = $atorFilmeObj->listaAtores($filme_id);
+        $listaAtores = $atorFilmeObj->listaAtores($filme_id,1);
         echo json_encode($listaAtores,JSON_UNESCAPED_UNICODE);
+    }
+    /**
+        *realiza a exclusão de vínculo entre ator e filme
+        *Exemplo: Gal Gadot não interpretou a Supergirl em "Mulher Maravilha"
+        *Com isso, o registro será excluído
+    */
+    public function actionDelete(){
+       $filme_id = Yii::$app->request->post('filme_id');
+       $ator_id = Yii::$app->request->post('ator_id');
+       $registro = AtorFilme::find()->where(['filme_id' => $filme_id])->andWhere(['ator_id' => $ator_id])->one();
+       $registro->delete();
+       echo "ok";
     }
 }

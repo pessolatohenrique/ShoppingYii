@@ -36,7 +36,11 @@ $this->params['breadcrumbs'][] = $filme_consulta['titulo'];
 
                     <a href="#" data-toggle="modal" data-target="#addAtor" class="linkAddAtor">
                         <i class="fa fa-plus-square" aria-hidden="true"></i>
-                        Adicionar Ator
+                        Adicionar
+                    </a>
+                    <a href="#" data-toggle="modal" data-target="#removeAtor" class="linkAddAtor">
+                        <i class="fa fa-minus-square" aria-hidden="true"></i>
+                        Remover
                     </a>
                     <br>
                     <strong>Sinopse: </strong><br>
@@ -79,6 +83,61 @@ $this->params['breadcrumbs'][] = $filme_consulta['titulo'];
           </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" id="btn_add_ator">Adicionar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- Modal de remoção Ator !-->
+<div id="removeAtor" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Atores Vinculados</h4>
+          </div>
+          <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                    <?php 
+                    if(count($atores_tabela) > 0):
+                    ?>
+                        <table class="table table-bordered tabela-dialog-atores">
+                            <thead>
+                                <tr class="bg-info">
+                                    <th>Ator</th>
+                                    <th>Personagem</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            foreach($atores_tabela as $key => $val):
+                            ?>
+                                <tr>
+                                    <input type="hidden" class="ator_id" value="<?=$val->ator_id?>">
+                                    <td><?=$val->ator->nome?></td>
+                                    <td><?=$val->personagem?></td>
+                                    <td>
+                                        <a href="#" class="link_exclui_ator">
+                                            <i class="fa fa-trash-o fa" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php
+                            endforeach;
+                    else:
+                    ?>
+                        <p>Nenhum ator vinculado a este filme!</p>
+                    <?php
+                    endif;
+                    ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+          </div>
+        <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
         </div>
     </div>

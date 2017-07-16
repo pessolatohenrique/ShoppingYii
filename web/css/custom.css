@@ -147,3 +147,6 @@
 .linkAddAtor{
 	padding-left: 1em;
 }
+.tabela-dialog-atores th:first-child{
+    width: 65%;
+}
