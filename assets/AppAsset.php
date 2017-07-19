@@ -18,7 +18,7 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css', 'css/custom.css','css/filmes_adm.css','https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css'
+        'css/site.css', 'css/custom.css','css/cinema.css','css/filmes_adm.css','https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css'
     ];
     public $js = [
         'https://use.fontawesome.com/b17cc3a995.js','js/geral.js','js/utils.js','js/buscaCNPJ.js','js/gastronomia.js','js/lojas.js','js/subcategoria.js','js/filmes.js','js/genero.js','js/distribuidora.js','js/diretor.js','js/atores.js',

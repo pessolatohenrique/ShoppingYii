@@ -150,3 +150,12 @@
 .tabela-dialog-atores th:first-child{
     width: 65%;
 }
+.salas li{
+	list-style-type: none;
+}
+.salas > li{
+	font-size: 1.05em;
+}
+.painel-filmes p{
+	margin-bottom: 0;
+}

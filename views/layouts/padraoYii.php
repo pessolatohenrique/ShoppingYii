@@ -47,6 +47,7 @@ AppAsset::register($this);
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pesquisar
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="<?=Url::base()?>/index.php?r=quadro_horario">Agenda de Filmes</a></li>
                         <li><a href="<?=Url::base()?>/index.php?r=categoria">Categoria</a></li>
                         <li><a href="<?=Url::base()?>/index.php?r=filme">Filme</a></li>
                         <li><a href="<?=Url::base()?>/index.php?r=gastronomia">Gastronomia</a></li>
