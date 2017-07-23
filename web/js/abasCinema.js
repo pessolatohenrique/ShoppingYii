@@ -3,6 +3,7 @@ function mostraFilmesAba(event){
 	$(seletorDia).on("click",function(event){
 		event.preventDefault();
 		var diaSplit = $(this).text().split(" ");
+		console.log(diaSplit);
 		var diaSemana = diaSplit[1];
 		console.log(diaSemana);
 		$(".filmesCartaz").css("display","none");

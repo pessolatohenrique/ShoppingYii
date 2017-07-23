@@ -25,7 +25,7 @@ UsuarioFinalAsset::register($this);
         </h1>
         <nav class="menu-principal">
             <ul class="servicos">
-                <li><a href="cinema.php">Cinema</a></li>
+                <li><a href="<?=Url::base();?>/index.php?r=site_cinema">Cinema</a></li>
                 <li><a href="<?=Url::base();?>/index.php?r=site_gastronomia">Gastronomia</a></li>
                 <li><a href="<?=Url::base();?>/index.php?r=site_loja">Lojas</a></li>
                 <li><a href="<?=Url::base();?>/?r=site/sobre">Sobre</a></li>

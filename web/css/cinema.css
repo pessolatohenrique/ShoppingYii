@@ -131,3 +131,33 @@
 .anunciosCinema img:hover{
 	opacity: 0.5;
 }
+.detalhes-filme{
+	padding-top: 0.5em;
+}
+.detalhes-filme img{
+    width: 210px;
+    height: 312px;
+}
+.coluna-poster{
+	width: 20%;
+	float: left;
+}
+.infoGerais-filme p{
+	line-height: 1.3em;
+}
+.etiquetas-filme{
+	margin-top: 0.5em;
+}
+.etiquetas-filme li{
+	margin-right: 0;
+}
+.trailer-filme{
+	clear: both;
+	padding-top: 1.1em;
+}
+.trailer-filme h3{
+	font-size: 1.3em;
+}
+.trailer-filme p{
+	padding-bottom: 0.3em;
+}
