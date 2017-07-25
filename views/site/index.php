@@ -23,28 +23,28 @@ $this->title = 'Shopping | Página Inicial';
         <li>
             <a href="#">
                 <figure>
-                    <img src="img/tvz.png" alt="Imagem da Loja TVZ">
+                    <img src="img/tvz.png" alt="Imagem da Loja TVZ" class="primeiroDestaque">
                 </figure>
             </a>
         </li>           
         <li>
             <a href="#">
                 <figure>
-                    <img src="img/umPlus.png" alt="Imagem da Loja 1+1">
+                    <img src="img/umPlus.png" alt="Imagem da Loja 1+1" class="fotoDestaque">
                 </figure>
             </a>
         </li>           
         <li>
             <a href="#">
                 <figure>
-                    <img src="img/opaque.png" alt="Imagem da Loja Opaque">
+                    <img src="img/opaque.png" alt="Imagem da Loja Opaque" class="fotoDestaque">
                 </figure>
             </a>
         </li>                   
         <li>
             <a href="#">
                 <figure>
-                    <img src="img/cns.png" alt="Imagem da Loja CNS">
+                    <img src="img/cns.png" alt="Imagem da Loja CNS" class="fotoDestaque">
                 </figure>
             </a>
         </li>

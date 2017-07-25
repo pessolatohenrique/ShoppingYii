@@ -1,0 +1,64 @@
+@media screen and (max-width: 768px){
+	/*configurações gerais*/
+	body{
+		font-size: 100%;
+	}
+	.header-desktop{
+		display: none;
+	}
+	.rodape{
+		display: none;
+	}
+	.anuncio{
+		display: none;
+	}
+	.container{
+		width: 93.5%;
+	}
+	/*configurações de cinema e gastronomia*/
+	.cinema li{
+		width: 32.33%;
+		box-sizing: border-box;
+		padding-left: 0.5em !important;
+	}
+	.gastronomia li{
+		width: 28.5%;
+		box-sizing: border-box;
+	}
+	.lojas li{
+		width: 49.5%;
+		padding: 0 0.2em 0.2em 0;
+	}
+	.ultimaLoja{
+		display: none;
+	}
+	.cinema{
+		clear: both;
+	}
+	.cinema,.gastronomia{
+		padding-top: 0.5em;
+	}
+	.cinema li > a > figure > img, .gastronomia li > a > figure > img, .lojas li > a > figure > img{
+		width: 100%;
+	}
+	.gastronomia li:last-child{
+		display: none;
+	}
+	.contato{
+		margin-top: 1.8em;
+	}
+	.endereco,.funcionamento{
+		width: 32% !important;
+		padding-left: 1em;
+		/*box-sizing: border-box;*/
+	}
+	.funcionamento a, .telefones a{
+		margin-top: 0 !important;
+	}
+	.telefones{
+		width: 30% !important;
+	}
+	.endereco,.funcionamento,.telefones{
+		padding-bottom: 1em;
+	}
+}
