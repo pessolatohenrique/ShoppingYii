@@ -1,0 +1,14 @@
+@media screen and (max-width:626px){
+	.endereco,.funcionamento{
+		width: 46% !important;
+		box-sizing: border-box;
+	}
+	.telefones{
+		width: 100% !important;
+		padding-left: 1em !important;
+	}
+	.gastronomia li{
+		width: 26.5%;
+		box-sizing: border-box;
+	}
+}
