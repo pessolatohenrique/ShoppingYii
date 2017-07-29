@@ -61,4 +61,14 @@
 	.endereco,.funcionamento,.telefones{
 		padding-bottom: 1em;
 	}
+	.cinema ul > li:first-child{
+		margin-bottom: 0.5em;
+	}
+	.cinema ul,.gastronomia ul{
+		margin-left: 0;
+	}
+	.cinema > ul img{
+	    /*width: 205px !important;*/
+    	/*height: 300px;*/
+	}
 }
