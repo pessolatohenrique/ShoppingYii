@@ -366,3 +366,13 @@ em{
 .cardapioItem{
 	font-weight: bold;
 }
+.cinema img{
+    width: 200px;
+    height: 325px;
+}
+.cinema > ul, .gastronomia ul{
+	margin-left: 1.2em;
+}
+.gastronomia img{
+	width: 235px;
+}
