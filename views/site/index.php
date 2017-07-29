@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Url;
 $this->title = 'Shopping | Página Inicial';
 ?>
 <div class="anuncio">
@@ -72,16 +73,32 @@ $this->title = 'Shopping | Página Inicial';
         <li>
             <a href="#">
                 <figure>
-                    <img src="img/filme2.png" alt="Filme: Eu Fico Loko">
-                    <figcaption>Eu Fico Loko</figcaption>
+                    <img src="<?=Url::base()?>/arquivos/homemaranhadevoltaaolar.jpg" alt="Filme: Homem-Aranha">
+                    <figcaption>Homem-Aranha</figcaption>
+                </figure>
+            </a>
+        </li>        
+        <li>
+            <a href="#">
+                <figure>
+                    <img src="<?=Url::base()?>/arquivos/carros3.jpg" alt="Filme: Carros 3">
+                    <figcaption>Carros 3</figcaption>
                 </figure>
             </a>
         </li>                   
         <li>
             <a href="#">
                 <figure>
-                    <img src="img/filme3.png" alt="Filme: La La Land">
-                    <figcaption>La La Land</figcaption>
+                    <img src="<?=Url::base()?>/arquivos/piratas_caribe.jpg" alt="Filme: Piratas do Caribe">
+                    <figcaption>Piratas do Caribe</figcaption>
+                </figure>
+            </a>
+        </li>
+                <li>
+            <a href="#">
+                <figure>
+                    <img src="<?=Url::base()?>/arquivos/mulher_maravilha.jpg" alt="Filme: Mulher Maravilha">
+                    <figcaption>Mulher Maravilha</figcaption>
                 </figure>
             </a>
         </li>
@@ -115,7 +132,7 @@ $this->title = 'Shopping | Página Inicial';
                 </figure>
             </a>
         </li>                   
-        <li>
+        <li class="ultimaGastronomia">
             <a href="#">
                 <figure>
                     <img src="img/gastronomia4.jpg" alt="Little Tokio">

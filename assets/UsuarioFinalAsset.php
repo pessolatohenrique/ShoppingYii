@@ -10,7 +10,7 @@ class UsuarioFinalAsset extends AssetBundle{
 	public $basePath = "@webroot";
 	public $baseUrl = "@web";
 	public $css = [
-		'css/reset.css', 'https://fonts.googleapis.com/css?family=Open+Sans', 'css/main.css','css/main_tablet.css','css/main_phone.css',
+		'css/reset.css', 'https://fonts.googleapis.com/css?family=Open+Sans', 'css/main.css','css/main_tablet.css','css/main_phone.css','css/main_smallphone.css',
 		'css/lojas.css', 'css/filmes_adm.css','css/cinema.css', 'css/gastronomia.css', 'css/contato.css', 'css/anuncio.css',
 		'css/formulario.css'
 	];

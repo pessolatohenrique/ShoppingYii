@@ -1,0 +1,53 @@
+@media screen and (max-width: 386px){
+	.lojas li{
+		width: 49.2%;
+		padding: 0 0.2em 0.2em 0;
+	}
+	.lojas > ul{
+		margin-left: 0.6em;
+	}
+	.container h2{
+		font-size: 1.8em !important;
+	}
+	.cinema > ul{
+		margin-left: 1.5em;
+	}
+	.cinema li{
+		width: 44%;
+		box-sizing: border-box;
+	}
+	.cinema > ul li{
+		margin-bottom: 0.5em;
+	}
+	.gastronomia > ul li{
+		width: 40%;
+	}
+	.gastronomia > ul li:first-child{
+		margin-bottom: 0.5em;
+	}
+	.endereco,.funcionamento,.telefones{
+		width: 100% !important;
+	}
+	.contato h3{
+		padding-bottom: 0 !important;
+	}
+	.cinema ul{
+		margin-left: 1.1em;
+	}
+	.cinema > ul li figcaption{
+		font-size: 0.8em;
+	}
+	.cinema > ul li{
+		width: 40%;
+		margin-right: 0.5em;
+	}
+	.cinema > ul img{
+	    width: 7.9em !important;
+    	height: 11.8em !important;
+	}
+	.cinema > ul figcaption{
+		width: 99% !important;
+		border: none;
+		background-color: transparent;
+	}
+}
