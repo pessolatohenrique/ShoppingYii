@@ -11,4 +11,30 @@
 		width: 26.5%;
 		box-sizing: border-box;
 	}
+	.cinema > ul li{
+		width: 45%;
+		box-sizing: border-box;
+		margin-bottom: 0.7em;
+	}
+	.cinema ul{
+		margin-left: 1em;
+	}
+	.cinema li > a > figure > img{
+	    width: 10em;
+    	height: 15em;
+	}
+	.cinema ul > li:last-child{
+		margin-bottom: 0 !important;
+	}
+	.gastronomia{
+		margin-top: 0 !important;
+	}
+	.cinema > ul figcaption{
+		width: 11.2em !important;
+	}
+	.cinema > ul figcaption{
+		width: 99% !important;
+		border: none;
+		background-color: transparent;
+	}
 }
