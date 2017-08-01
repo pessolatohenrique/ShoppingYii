@@ -71,4 +71,45 @@
 	    /*width: 205px !important;*/
     	/*height: 300px;*/
 	}
+	/*configurações do menu*/
+	.menu-mobile{
+		background-color: #eee;
+		padding-top: 0.45em;
+		display: block;
+	}
+	button.abre-menu,button.fecha-menu{
+		background-color: #eee;
+		color: #777;
+		cursor: pointer;
+		font-size: 1.3em;
+	}
+	.menu-mobile-lateral{
+		display: block;
+		height: 100%;
+		position: fixed;
+		left: -90%;
+		z-index: 10;
+		background-color: #eee;
+		width: 65%;
+		padding: 1em;
+		transition: left 0.3s ease-out;
+	}
+	.menu-mobile-lateral li{
+		width: 100%;
+		padding: 1em 0; 
+	}
+	.menu-mobile-lateral li > a{
+		color: #458B74;
+		text-transform: uppercase;
+		font-size: 1.1em;
+		text-decoration: none;
+	}
+	.ativa-menu{
+		left: 0;
+		
+		outline: 9999px solid rgba(0,0,0,0.5);
+	}
+	.desativa-menu{
+		transition: right 0.3s ease-out;
+	}
 }

@@ -47,33 +47,28 @@ UsuarioFinalAsset::register($this);
                 <li><a href="#">Busca</a></li>
             </ul>
         </nav>
-        <nav class="barra-navegacao">
-            
-        </nav>
     </header>
-    <!-- Menu Responsivo !-->
-<!--     <header>
-        <div class="container">
-            <button type="button" class="menu-abrir">Abre Menu</button>
-            <h1 class="logo">
-                <img src="img/logo.png" alt="Notícias.com">
-            </h1>
-
-            <nav class="barra-nav">
-                <button type="button" class="menu-fechar">Fecha Menu</button>
-                <ul class="menu-principal">
-                    <li><a href="noticias.html" class="noticias">Notícias</a>
-                    <li><a href="esportes.html" class="esportes">Esportes</a>
-                    <li><a href="famosos.html" class="famosos">Famosos</a>
-                </ul>
-
-                <form class="busca">
-                    <input type="search" id="campo-busca">
-                    <button type="submit">Buscar</button>
-                </form>
-            </nav>
-        </div>
-    </header> -->
+    <div class="menu-mobile">
+        <button type="button" class="abre-menu">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+    </div>
+    <nav class="menu-mobile-lateral">
+        <ul>
+            <li>
+                <a href="<?=Url::base();?>/index.php?r=site_cinema">Cinema</a>
+            </li>
+            <li>
+                <a href="<?=Url::base();?>/index.php?r=site_gastronomia">Gastronomia</a>
+            </li>
+            <li>
+                <a href="<?=Url::base();?>/index.php?r=site_loja">Lojas</a>
+            </li>
+            <li>
+                <a href="<?=Url::base();?>/index.php?r=site/sobre">Sobre</a>
+            </li>
+        </ul>
+    </nav>
     <main class="container">
         <?= $content ?>
     </main>

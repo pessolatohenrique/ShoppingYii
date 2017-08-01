@@ -376,3 +376,6 @@ em{
 .gastronomia img{
 	width: 235px;
 }
+.menu-mobile,.menu-mobile-lateral{
+	display: none;
+}

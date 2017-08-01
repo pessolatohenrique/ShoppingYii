@@ -45,10 +45,35 @@ function excluiLinhaTabela(linha){
 		$(linha).remove();
 	});
 }
+function abreMenu(seletor){
+	var menuAtivo = $(seletor).hasClass("ativa-menu");
+	if(menuAtivo != false){
+		$(seletor).removeClass("ativa-menu");
+	}else{	
+		setTimeout(function(){
+			$(seletor).addClass("ativa-menu");
+		},100);
+	}
+}
+function fechaMenu(seletor){
+	var flagMenu = $(seletor).hasClass("ativa-menu");
+	if(flagMenu != false){
+		$(seletor).removeClass("ativa-menu");
+	}
+}
 $(".linkConfirmForm").on("click",function(event){
 	event.preventDefault();
 	var mensagem = "Deseja realmente executar esta ação?";
 	var link = $(this);
 	var tipo = "form";
 	verificaConfirm(mensagem,link,tipo);
+});
+$(".abre-menu").on("click",function(event){
+	var seletor = $(".menu-mobile-lateral");
+	abreMenu(seletor);
+});
+$('html').click(function(event) {
+	var seletor = $(".menu-mobile-lateral");
+	var elemento_disp = event.target.type;
+    fechaMenu(seletor);
 });
