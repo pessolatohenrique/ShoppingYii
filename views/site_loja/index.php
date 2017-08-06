@@ -8,6 +8,7 @@
 		<h3>Categorias</h3>
 		<form action="" method="GET">
 			<input type="search" name="busca" placeholder="Realize a busca aqui!" class="campoPesquisa" id="pesquisaLoja">
+			<button type="button" class="botao-busca mostra-categorias">Categorias</button>
 		</form>
 		<ul>
 			<?php foreach($categorias as $key => $val): ?>
@@ -22,7 +23,8 @@
 		<?php foreach($lojas as $key => $val): ?>
 			<ul class="itemPainel">
 				<li>
-					<h4><a href="<?=Url::base()?>/index.php?r=site_loja/search&loja_id=<?=$val['id']?>"><?=$val['nome_loja']?></a></h4>
+					<h4><a href="<?=Url::base()?>/index.php?r=site_loja/search&loja_id=<?=$val['id']?>"><?=$val['nome_loja']?></a>
+					</h4>
 					<ul>
 						<li><?=substr($val['descricao'],0,48)?></li>
 						<li>

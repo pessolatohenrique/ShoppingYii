@@ -1,3 +1,23 @@
+/**
+	exibe ou oculta uma lista de acordo com os parâmetros fornecidos
+	Exemplo de uso: categorias para versão mobile
+	*@param seletor: seletor referente à lista, enviar com caractere identificador (puro, #, ou .)
+	*@param botao: botao que dispara o evento
+*/
+function exibeLista(seletor,botao){
+	var estado_exibicao = $(seletor).css("display");
+	if(estado_exibicao == "none"){
+		$(botao).addClass("botao-ativo");
+		$(seletor).slideDown("slow","swing",function(){
+			$(seletor).css("display","block");
+		});
+	}else{
+		$(botao).removeClass("botao-ativo");
+		$(seletor).slideUp("slow","swing",function(){
+			$(seletor).css("display","none");
+		});
+	}
+}
 function alteraIconePainel(link){
 	var icone = link.find("i");
 	if(icone.hasClass("fa-caret-down")){

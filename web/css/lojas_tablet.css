@@ -1,0 +1,64 @@
+@media screen and (max-width: 768px){
+	main h1{
+	    font-size: 2em;
+	    text-indent: 1em;
+	    padding: 0.6em 0;
+	    margin-left: -1em;
+	    margin-right: -2em;
+	    width: 118% !important;
+	}
+	.categoriasGastronomia{
+		width: 100%;
+	}
+	.campoPesquisa{
+		width: 83%;
+	}
+	.categoriasGastronomia h3{
+		display: none;
+	}
+	.categoriasGastronomia ul{
+		display: none;
+	}
+	.showItens{
+		display: block;
+	}
+	.categorias li > a {
+	    text-decoration: none;
+	    color: #4F4F4F;
+	}
+	.botao-busca{
+		display: inline-block;
+	    color: #008B45;
+	    background-color: white;
+	    border: 0.5px solid #008B45;
+	    padding: 0.68em 0.6em;
+	}
+	.botao-ativo{
+	    color: white;
+    	background-color: #2e8b57;
+	}
+	.painel_itens{
+	    width: 100%;
+    	margin-top: 0; 
+	}
+	.itemPainel {
+	    border: none;
+	    border-bottom: 1px solid #ccc;
+	    padding: 0.8em 0 0.8em 0.9em;
+	    box-sizing: border-box;
+	    margin-bottom: 0;
+	}
+	.itemPainel ul{
+		display: none;
+	}
+	.itemPainel h4{
+		text-transform: none;
+    	font-size: 1em;
+    	font-weight: normal;
+	}
+	.itemPainel h4 > a{
+		display: inline-block;
+		box-sizing: border-box;
+	    width: 96% !important;
+	}
+}

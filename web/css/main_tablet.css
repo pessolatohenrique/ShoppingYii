@@ -75,6 +75,7 @@
 	.menu-mobile{
 		background-color: #eee;
 		padding-top: 0.45em;
+		width: 120% !important;
 		display: block;
 	}
 	button.abre-menu,button.fecha-menu{

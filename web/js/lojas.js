@@ -37,6 +37,11 @@ function mainLoja(){
 		var link = $(this);
 		minimizaPainel(link,false);
 	});
+	$(".mostra-categorias").on("click",function(){
+		var seletor = ".categorias ul";
+		var botao = ".mostra-categorias";
+		exibeLista(seletor,botao);		
+	});
 }
 $(document).ready(function(){
 	mainLoja();
