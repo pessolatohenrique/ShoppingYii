@@ -1,8 +1,34 @@
 @media screen and (max-width:626px){
 	main h1{
-		text-indent: 1.5em;
+		text-indent: 1.5em;	
 	}
 	.campoPesquisa{
 		width: 70%;
+	}
+	.informacoesConsulta figure {
+   		width: 98%;
+   		box-sizing: border-box;
+   	}
+   	.informacoesConsulta figure > img{
+		height: 15em;
+	}
+	.informacoesConsulta ul {
+	    width: 98%;
+	    box-sizing: border-box;
+	    float: none;
+	    clear: both;
+	}
+	li,p,div{
+		font-size: 0.9em;
+	}
+	.subcategoriaConsulta h3{
+		font-size: 1.3em;
+	}
+	.subcategoriaConsulta{
+		width: 98%;
+		box-sizing: border-box;
+	}
+	.subcategorias_usuario li{
+		padding: 0.5em 0.8em 0.5em 0.8em;
 	}
 }
