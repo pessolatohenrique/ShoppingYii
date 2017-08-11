@@ -50,8 +50,8 @@ $this->title = "Shopping | ".$model['nome_loja'];
 				<?php foreach($itens as $key => $val): 
                       	if($val['cardapioTipo_id'] == $tipo_id): ?>
 							<li>
-								<span class="cardapioItem"><?=$val['nome_item']?></span> - 
-								<span class="cardapioDescricao"><?=substr($val['descricao'],0,80)?></span>
+								<span class="cardapioItem"><?=$val['nome_item']?></span>  
+								<span class="cardapioDescricao">- <?=substr($val['descricao'],0,80)?></span>
 								<span class="cardapioPreco">R$ <?=number_format($val['preco'],2,",",".")?></span>
 							</li>
 				<?php 
