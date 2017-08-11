@@ -1,4 +1,17 @@
 @media screen and (max-width: 768px){
+	.informacoesConsulta figure > img{
+		width: 100%;
+		height: 10%;
+	}
+	.informacoesConsulta figure > figcaption{
+		background-color: transparent;
+	}
+	.informacoesConsulta figure{
+		width: 53%;
+	}
+	.lojasSemelhantes{
+		display: none;
+	}
 	main h1{
 	    font-size: 2em;
 	    text-indent: 1em;
