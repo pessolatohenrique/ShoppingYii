@@ -4,11 +4,13 @@ $this->title = "Shopping | ".$filme_consulta['titulo'];
 ?>
 <h1><?=$filme_consulta['titulo']?></h1>
 <section class="detalhes-filme">
-	<div class="coluna-poster">
-		<figure>
-			<img src="<?=Url::base()?>/arquivos/<?=$filme_consulta['arquivo']?>" alt="Pôster do filme <?=$filme_consulta['titulo']?>">
-			<figcaption>Pôster do filme</figcaption>
-		</figure>
+	<div class="poster-color">
+		<div class="coluna-poster">
+			<figure>
+				<img src="<?=Url::base()?>/arquivos/<?=$filme_consulta['arquivo']?>" alt="Pôster do filme <?=$filme_consulta['titulo']?>">
+				<figcaption>Pôster do filme</figcaption>
+			</figure>
+		</div>
 	</div>
 	<div class="coluna-filme">
 		<div class="infoGerais-filme">

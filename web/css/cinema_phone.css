@@ -1,0 +1,26 @@
+@media screen and (max-width:626px){
+	.filmesSemana{
+		font-size: 1.4em;
+	}
+	.menuNavCinema{
+		font-size: 1.3em;
+	}
+	.coluna-filme{
+		font-size: 1.2em;
+		clear: both;
+		margin-left: 0;
+	}
+	.etiquetas-filme{
+		font-size: 0.9em;
+	}
+	.coluna-poster{
+		width: 50.5%;
+		float: none;
+		margin: 0 auto;
+	}
+	.poster-color{
+		background-color: #C1CDC1;
+		padding-bottom: 0.8em;
+		padding-top: 0.8em;
+	}
+}
