@@ -11,7 +11,7 @@ class UsuarioFinalAsset extends AssetBundle{
 	public $baseUrl = "@web";
 	public $css = [
 		'css/reset.css', 'https://fonts.googleapis.com/css?family=Open+Sans', 'css/main.css','css/main_tablet.css','css/main_phone.css','css/main_smallphone.css',
-		'css/lojas.css', 'css/lojas_tablet.css','css/lojas_phone.css','css/lojas_smallphone.css','css/filmes_adm.css','css/cinema.css', 'css/gastronomia.css', 'css/gastronomia_phone.css' ,'css/contato.css', 'css/anuncio.css',
+		'css/lojas.css', 'css/lojas_tablet.css','css/lojas_phone.css','css/lojas_smallphone.css','css/filmes_adm.css','css/cinema.css', 'css/gastronomia.css', 'css/gastronomia_phone.css','css/cinema_tablet.css','css/contato.css', 'css/anuncio.css',
 		'css/formulario.css'
 	];
 	public $js = [
